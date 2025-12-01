@@ -80,13 +80,13 @@ return [
     | Session Database Table
     |--------------------------------------------------------------------------
     |
-    | When using the "database" session driver, you may specify the table to
+    | When using the "database" session driver, you may specify the dashboard to
     | be used to store sessions. Of course, a sensible default is defined
-    | for you; however, you're welcome to change this to another table.
+    | for you; however, you're welcome to change this to another dashboard.
     |
     */
 
-    'table' => env('SESSION_TABLE', 'sessions'),
+    'dashboard' => env('SESSION_TABLE', 'sessions'),
 
     /*
     |--------------------------------------------------------------------------

@@ -20,20 +20,18 @@ Route::group(['middleware' => ['visitor','locale']], function () {
     Route::get('/service', [ServiceController::class, 'service'])->name('front.service');
     Route::get('/pages', [PagesController::class, 'pages'])->name('front.pages');
     Route::get('/contact', [ContactController::class, 'contact'])->name('front.contact');
-    Route::post('/emails', [SubscribeController::class, 'email'])->name('front.subscribe');
+    Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 });
 
 Auth::routes([
     'reset' => false,
     'verify' => false,
-    'register' => false,
-    'login' => false,
-    'logout' => false,
 ]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/home_banners', HomeBannerController::class, );
+    Route::get('/subscribes', [SubscribeController::class, 'index'])->name('subscribes');
 });
 
 

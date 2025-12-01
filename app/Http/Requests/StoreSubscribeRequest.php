@@ -12,12 +12,11 @@ class StoreSubscribeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
-//        if (auth()->check()) {
-//            return true;
-//        }else{
-//            return false;
-//        }
+        if (auth()->check()) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

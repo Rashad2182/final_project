@@ -14,7 +14,7 @@ class SubscribeController extends Controller
      */
     public function index()
     {
-        //
+        return view('back.pages.subscribes.subscribes');
     }
 
     /**
@@ -30,6 +30,7 @@ class SubscribeController extends Controller
      */
     public function store(StoreSubscribeRequest $request)
     {
+
         return $request->authorize();
     }
 

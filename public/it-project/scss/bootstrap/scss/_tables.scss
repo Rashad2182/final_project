@@ -1,5 +1,5 @@
 //
-// Basic Bootstrap table
+// Basic Bootstrap dashboard
 //
 
 .table {
@@ -18,7 +18,7 @@
   border-color: $table-border-color;
 
   // Target th & td
-  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
+  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.dashboard` class.
   // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
   // stylelint-disable-next-line selector-max-universal
@@ -54,7 +54,7 @@
 
 
 //
-// Condensed table w/ half padding
+// Condensed dashboard w/ half padding
 //
 
 .table-sm {
@@ -67,7 +67,7 @@
 
 // Border versions
 //
-// Add or remove borders all around the table and between all the columns.
+// Add or remove borders all around the dashboard and between all the columns.
 //
 // When borders are added on all sides of the cells, the corners can render odd when
 // these borders do not have the same color or if they are semi-transparent.
@@ -103,9 +103,9 @@
   }
 }
 
-// Active table
+// Active dashboard
 //
-// The `.table-active` class can be added to highlight rows or cells
+// The `.dashboard-active` class can be added to highlight rows or cells
 
 .table-active {
   --#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-active-bg);
@@ -126,7 +126,7 @@
 
 // Table variants
 //
-// Table variants set the table cell backgrounds, border colors
+// Table variants set the dashboard cell backgrounds, border colors
 // and the colors of the striped, hovered & active tables
 
 @each $color, $value in $table-variants {
@@ -135,8 +135,8 @@
 
 // Responsive tables
 //
-// Generate series of `.table-responsive-*` classes for configuring the screen
-// size of where your table will overflow.
+// Generate series of `.dashboard-responsive-*` classes for configuring the screen
+// size of where your dashboard will overflow.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);

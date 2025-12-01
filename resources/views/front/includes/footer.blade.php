@@ -34,9 +34,12 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-uppercase mb-4">@lang('messages.newsletter')</h4>
                 <div class="position-relative mb-4">
+                    <form action="{{ route('subscribe.store') }}" @method('POST')">
+                    @csrf
                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="@lang('messages.your email')">
                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" id="subscribeBtn">@lang('messages.subscribe')
                         <i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
                 </div>
                 <div class="d-flex pt-1 m-n1">
                     <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i class="fab fa-twitter"></i></a>
@@ -70,22 +73,23 @@
 
 @section('js')
     <script>
-       $(document).ready(function () {
-           $('subscribeBtn').click(function () {
-               let email = $('subscribeBtn').val();
-
-               $.ajax({
-                   type: 'POST',
-                   url: '{{ route('fro') }}',
-                   dataType: 'json',
-                   data: {email: email},
-                   success: function (response) {
-
-                   }
-               })
-           })
-       })
+        $(document).ready(function () {
+            $('subscribeBtn').on('click', function() {
+                $ajax({
+                    url: '/subscribe',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {email: $('#subscribeBtn').val()},
+                    success: function(response) {
+                        if (response.success) {
+                            $('subscribeBtn').val('');
+                            alert(@lang('toaster.subscribe success'))
+                        }else{
+                            alert(@lang('toaster.subscribe error'))
+                        }
+                    }
+                })
+            })
+        })
     </script>
 @endsection
-
-

@@ -114,7 +114,7 @@
             </div>
         </div>
         <!-- 🌍 End Language Dropdown -->
-        <a href="/register" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
+        <a href="{{ route('register') }}" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
                 class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>

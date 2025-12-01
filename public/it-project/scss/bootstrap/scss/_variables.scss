@@ -523,9 +523,9 @@ $mark-bg:                     #fcf8e3 !default;
 
 // Tables
 //
-// Customizes the `.table` component with basic values, each used across all table variations.
+// Customizes the `.dashboard` component with basic values, each used across all dashboard variations.
 
-// scss-docs-start table-variables
+// scss-docs-start dashboard-variables
 $table-cell-padding-y:        .5rem !default;
 $table-cell-padding-x:        .5rem !default;
 $table-cell-padding-y-sm:     .25rem !default;
@@ -561,9 +561,9 @@ $table-group-separator-color: currentColor !default;
 $table-caption-color:         $text-muted !default;
 
 $table-bg-scale:              -80% !default;
-// scss-docs-end table-variables
+// scss-docs-end dashboard-variables
 
-// scss-docs-start table-loop
+// scss-docs-start dashboard-loop
 $table-variants: (
   "primary":    shift-color($primary, $table-bg-scale),
   "secondary":  shift-color($secondary, $table-bg-scale),
@@ -574,7 +574,7 @@ $table-variants: (
   "light":      $light,
   "dark":       $dark,
 ) !default;
-// scss-docs-end table-loop
+// scss-docs-end dashboard-loop
 
 
 // Buttons + Forms
