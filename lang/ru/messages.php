@@ -1,0 +1,30 @@
+<?php
+
+return[
+    'home' => 'Главная страница',
+    'about'=>'О нас',
+    'service'=>'Сервисы',
+    'pages'=>'Страницы',
+    'contact'=>'Контакт',
+    'sign up'=>'Регистрация',
+    'pricing plan' => 'Тарифный План',
+    'our programists' => 'Наши Программисты',
+    'working hours' => 'Рабочее Время',
+    'testimonials' => 'Отзывы',
+    'get in touch' => 'Свяжитесь с нами',
+    'quick links' => 'Быстрые Ссылки',
+    'contact us' => 'Свяжитесь с нами',
+    'our services' => 'Наши Услуги',
+    'terms & condition' => 'Условия и Состояние',
+    'support' => 'Техническая Поддержка',
+    'newsletter' => 'Привязать Электронную @Почту',
+    'subscribe' => 'Подписатся',
+    'send message' => 'Отправить Cообщение',
+    'fullname' => 'Имя Фамилия',
+    'email' => 'Почта',
+    'subject' => 'Подтвергать',
+    'message' => 'Письмо',
+    'all rights reserved' => 'Все Права Защищены',
+    'loading' => 'Загрузка',
+    'your email' => 'Ваша Электронная Почта'
+];
