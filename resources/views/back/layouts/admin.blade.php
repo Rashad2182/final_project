@@ -15,11 +15,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/demo.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ asset('dashboard') }}/css/tabler.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ asset('dashboard') }}/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ asset('dashboard') }}/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ asset('dashboard') }}/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ asset('dashboard') }}/css/demo.min.css?1692870487" rel="stylesheet" />
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -45,18 +45,18 @@
 
 
 <!-- Template Javascript -->
-<script src="{{ asset('it-project') }}/js/main.js"></script>
+<script src="{{ asset('dashboard') }}/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <!-- Libs JS -->
-<script src="./dist/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
-<script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
-<script src="./dist/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
-<script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
 <!-- Tabler Core -->
-<script src="./dist/js/tabler.min.js?1692870487" defer></script>
-<script src="./dist/js/demo.min.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/tabler.min.js?1692870487" defer></script>
+<script src="{{ asset('dashboard') }}/js/demo.min.js?1692870487" defer></script>
 <script>
     // @formatter:off
     document.addEventListener("DOMContentLoaded", function () {

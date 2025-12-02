@@ -73,7 +73,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#subscribeBtn').click(function () {
+            let email = $('#subscribeEmail').val();
 
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('subscribe.store') }}',
+                data: {
+                    'email': email,
+                    '_token': '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    $('#subscribeEmail').val('');
+
+                    toastr.success('Abunə oldunuz', 'Uğurlu əməliyyat');
+                },
+                error : function (myErrors) {
+                    $.each(myErrors.responseJSON.errors,function (key, value) {
+                        toastr.error(value,'Xəta');
+                    })
+                }
+            });
+        });
+    });
+</script>
 @yield('js')
 </body>
 </html>

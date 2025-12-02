@@ -34,9 +34,9 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-uppercase mb-4">@lang('messages.newsletter')</h4>
                 <div class="position-relative mb-4">
-                    <form action="{{ route('subscribe.store') }}" @method('POST')">
+                    <form action="{{ route('subscribe.store') }}" method="POST">
                     @csrf
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="@lang('messages.your email')">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" id="subscribeEmail" placeholder="@lang('messages.your email')">
                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" id="subscribeBtn">@lang('messages.subscribe')
                         <i class="fa-solid fa-paper-plane"></i></button>
                     </form>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com"></a>
+                    Designed By <a class="border-bottom" href=""></a>
                 </div>
             </div>
         </div>
@@ -72,24 +72,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @section('js')
-    <script>
-        $(document).ready(function () {
-            $('subscribeBtn').on('click', function() {
-                $ajax({
-                    url: '/subscribe',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {email: $('#subscribeBtn').val()},
-                    success: function(response) {
-                        if (response.success) {
-                            $('subscribeBtn').val('');
-                            alert(@lang('toaster.subscribe success'))
-                        }else{
-                            alert(@lang('toaster.subscribe error'))
-                        }
-                    }
-                })
-            })
-        })
-    </script>
+
 @endsection

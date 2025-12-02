@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel - Red & Black Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-red: #dc3545;
+            --dark-red: #bb2d3b;
+            --light-red: #ff4757;
+            --pure-black: #000000;
+            --dark-gray: #111111;
+            --medium-gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--pure-black);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(220, 53, 69, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(220, 53, 69, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgShift 20s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--pure-black) 0%, var(--dark-gray) 100%);
+            border-bottom: 2px solid var(--primary-red);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(220, 53, 69, 0.3);
+        }
+
+        .navbar-brand {
+            color: var(--primary-red) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            text-shadow: 0 0 20px rgba(220, 53, 69, 0.8);
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            margin: 0 5px;
+            padding: 8px 15px !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-red) !important;
+            border-color: var(--primary-red);
+            background: rgba(220, 53, 69, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            border-color: var(--primary-red);
+            background: rgba(220, 53, 69, 0.2);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--dark-gray);
+            border-right: 2px solid var(--primary-red);
+            min-height: calc(100vh - 56px);
+            padding: 20px 0;
+            box-shadow: 4px 0 30px rgba(220, 53, 69, 0.2);
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff;
+            padding: 15px 20px;
+            border-left: 3px solid transparent;
+            border-radius: 0;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link:hover {
+            border-left-color: var(--primary-red);
+            background: rgba(220, 53, 69, 0.1);
+            transform: translateX(5px);
+        }
+
+        .sidebar .nav-link.active {
+            background: linear-gradient(90deg, rgba(220, 53, 69, 0.3) 0%, transparent 100%);
+            border-left-color: var(--primary-red);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--medium-gray);
+            border: 2px solid var(--primary-red);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(220, 53, 69, 0.4);
+            border-color: var(--light-red);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            border-bottom: 2px solid var(--primary-red);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 15px 20px;
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            background: var(--dark-gray);
+            border: 2px solid var(--primary-red);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--primary-red), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(220, 53, 69, 0.5);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+        }
+
+        .stat-label {
+            color: #cccccc;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .btn-red {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            border: 2px solid var(--primary-red);
+            color: #ffffff;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-red::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .btn-red:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-red:hover {
+            box-shadow: 0 5px 25px rgba(220, 53, 69, 0.6);
+            transform: translateY(-2px);
+            border-color: var(--light-red);
+        }
+
+        .btn-outline-red {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-red:hover {
+            background: var(--primary-red);
+            color: #ffffff;
+            box-shadow: 0 5px 25px rgba(220, 53, 69, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Tables */
+        .table {
+            color: #ffffff;
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+        }
+
+        .table thead th {
+            border-bottom: 2px solid var(--primary-red);
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .table tbody tr {
+            background: var(--medium-gray);
+            border-bottom: 1px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background: rgba(220, 53, 69, 0.1);
+            transform: scale(1.01);
+        }
+
+        .table tbody td {
+            border: none;
+            padding: 15px;
+        }
+
+        /* Form Controls */
+        .form-control, .form-select {
+            background: var(--medium-gray);
+            border: 2px solid var(--primary-red);
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: var(--dark-gray);
+            border-color: var(--light-red);
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+            color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: #888888;
+        }
+
+        /* Badges */
+        .badge {
+            border: 1px solid var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border-color: #28a745;
+        }
+
+        .badge-warning {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .badge-danger {
+            background: rgba(220, 53, 69, 0.2);
+            color: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        /* Progress Bars */
+        .progress {
+            background: var(--dark-gray);
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--dark-red) 0%, var(--primary-red) 50%, var(--light-red) 100%);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+
+        @keyframes progressShine {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            background: var(--dark-gray);
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(220, 53, 69, 0.2);
+            color: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        /* Page Title */
+        .page-title {
+            color: var(--primary-red);
+            text-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red) 0%, transparent 100%);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--pure-black);
+            border: 1px solid var(--primary-red);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--light-red);
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-red);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-fire"></i> CONTROL PANEL
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=dc3545&color=fff" alt="Profile" class="avatar">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar d-none d-md-block">
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a class="nav-link" href="#"><i class="bi bi-people"></i> Users</a>
+                <a class="nav-link" href="#"><i class="bi bi-cart"></i> Orders</a>
+                <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Analytics</a>
+                <a class="nav-link" href="#"><i class="bi bi-file-text"></i> Reports</a>
+                <a class="nav-link" href="#"><i class="bi bi-wallet2"></i> Finance</a>
+                <a class="nav-link" href="#"><i class="bi bi-envelope"></i> Messages</a>
+                <a class="nav-link" href="#"><i class="bi bi-shield-check"></i> Security</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10 p-4">
+            <h1 class="page-title animate-in">Dashboard Overview</h1>
+
+            <!-- Stats Row -->
+            <div class="row mb-4 animate-in">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                        <div class="stat-value">2,986</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-currency-dollar"></i></div>
+                        <div class="stat-value">$4,300</div>
+                        <div class="stat-label">Revenue</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-cart-fill"></i></div>
+                        <div class="stat-value">132</div>
+                        <div class="stat-label">Sales</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-graph-up"></i></div>
+                        <div class="stat-value">75%</div>
+                        <div class="stat-label">Conversion</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row mb-4 animate-in">
+                <div class="col-12">
+                    <button class="btn btn-red me-2 mb-2"><i class="bi bi-plus-circle"></i> Create New</button>
+                    <button class="btn btn-outline-red me-2 mb-2"><i class="bi bi-download"></i> Export</button>
+                    <button class="btn btn-outline-red mb-2"><i class="bi bi-filter"></i> Filter</button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row animate-in">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-lightning-charge"></i> Quick Actions
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <input type="text" class="form-control" placeholder="Search users...">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <select class="form-select">
+                                        <option>Filter by status</option>
+                                        <option>Active</option>
+                                        <option>Pending</option>
+                                        <option>Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <button class="btn btn-red w-100"><i class="bi bi-search"></i> Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

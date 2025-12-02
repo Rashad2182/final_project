@@ -12,7 +12,12 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if (auth()->check()) {
+            $this->redirect(route('admin.dashboard'));
+        }else{
+            return false;
+        }
+        return true;
     }
 
     /**

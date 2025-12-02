@@ -12,11 +12,7 @@ class StoreSubscribeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (auth()->check()) {
-            return true;
-        }else{
-            return false;
-        }
+      return true;
     }
 
     /**
@@ -27,7 +23,7 @@ class StoreSubscribeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => 'required|string|email|max:255|unique:subscribes',
         ];
     }
 }
