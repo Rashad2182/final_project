@@ -108,7 +108,7 @@
 
         <div class="mb-3">
             <label>Email</label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                    required autofocus/>
             @error('email')
             <div class="text-danger small">{{ $message }}</div>
@@ -132,7 +132,7 @@
         </div>
 
 
-        <button class="btn-login" type="submit">Daxil ol</button>
+        <button class="btn-login" type="submit"><i class="fa-solid fa-right-to-bracket me-2"></i>Daxil ol</button>
 
 
         @if (Route::has('register'))

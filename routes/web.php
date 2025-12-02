@@ -14,6 +14,10 @@ Route::get('/language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('locale');
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth'], 'as' => 'custom_namespace.'], function () {
+    Lfm::routes();
+});
+
 Route::group(['middleware' => ['visitor','locale']], function () {
     Route::get('/', [HomeController::class, 'home'])->name('front.home');
     Route::get('/about', [AboutController::class, 'about'])->name('front.about');
@@ -29,7 +33,7 @@ Auth::routes([
 ]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('/home_banners', HomeBannerController::class, );
     Route::get('/subscribes', [SubscribeController::class, 'index'])->name('subscribes');
 });
