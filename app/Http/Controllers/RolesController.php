@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Back;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreHomeBannerRequest;
-use App\Http\Requests\UpdateHomeBannerRequest;
-use App\Models\HomeBanner;
+use App\Models\Roles;
+use App\Http\Requests\StoreRolesRequest;
+use App\Http\Requests\UpdateRolesRequest;
 
-class HomeBannerController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +27,7 @@ class HomeBannerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreHomeBannerRequest $request)
+    public function store(StoreRolesRequest $request)
     {
         //
     }
@@ -36,7 +35,7 @@ class HomeBannerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HomeBanner $homeBanner)
+    public function show(Roles $roles)
     {
         //
     }
@@ -44,7 +43,7 @@ class HomeBannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HomeBanner $homeBanner)
+    public function edit(Roles $roles)
     {
         //
     }
@@ -52,7 +51,7 @@ class HomeBannerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateHomeBannerRequest $request, HomeBanner $homeBanner)
+    public function update(UpdateRolesRequest $request, Roles $roles)
     {
         //
     }
@@ -60,7 +59,7 @@ class HomeBannerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HomeBanner $homeBanner)
+    public function destroy(Roles $roles)
     {
         //
     }

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Back;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreVisitorRequest;
-use App\Http\Requests\UpdateVisitorRequest;
-use App\Models\Visitor;
+use App\Models\Subscribers;
+use App\Http\Requests\StoreSubscribersRequest;
+use App\Http\Requests\UpdateSubscribersRequest;
 
-class VisitorController extends Controller
+class SubscribersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +27,7 @@ class VisitorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVisitorRequest $request)
+    public function store(StoreSubscribersRequest $request)
     {
         //
     }
@@ -36,7 +35,7 @@ class VisitorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Visitor $visitor)
+    public function show(Subscribers $subscribers)
     {
         //
     }
@@ -44,7 +43,7 @@ class VisitorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Visitor $visitor)
+    public function edit(Subscribers $subscribers)
     {
         //
     }
@@ -52,7 +51,7 @@ class VisitorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVisitorRequest $request, Visitor $visitor)
+    public function update(UpdateSubscribersRequest $request, Subscribers $subscribers)
     {
         //
     }
@@ -60,7 +59,7 @@ class VisitorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Visitor $visitor)
+    public function destroy(Subscribers $subscribers)
     {
         //
     }

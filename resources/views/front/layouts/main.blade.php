@@ -80,7 +80,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '{{ route('subscribe.store') }}',
+                url: '{{ route('front.subscribe.store') }}',
                 data: {
                     'email': email,
                     '_token': '{{ csrf_token() }}'
@@ -88,11 +88,11 @@
                 success: function (response) {
                     $('#subscribeEmail').val('');
 
-                    toastr.success('Abunə oldunuz', 'Uğurlu əməliyyat');
+                    toastr.success(@lang('toaster.subscribe success');
                 },
                 error : function (myErrors) {
                     $.each(myErrors.responseJSON.errors,function (key, value) {
-                        toastr.error(value,'Xəta');
+                        toastr.error(value,@lang('toaster.subscribe error');
                     })
                 }
             });

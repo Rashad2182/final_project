@@ -26,5 +26,8 @@ return[
     'message' => 'Письмо',
     'all rights reserved' => 'Все Права Защищены',
     'loading' => 'Загрузка',
-    'your email' => 'Ваша Электронная Почта'
+    'your email' => 'Ваша Электронная Почта',
+    'are you sure you want to delete?' => 'Вы действительно хотите удалить?',
+    'cencel' => 'Отменить',
+    'delete' => 'Удалить',
 ];

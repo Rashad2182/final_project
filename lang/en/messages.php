@@ -26,4 +26,7 @@ return [
     'all rights reserved' => 'All Rights Reserved',
     'loading' => 'Loading',
     'your email' => 'Your Email',
+    'are you sure you want to delete?' => 'Are you sure you want to delete?',
+    'cencel' => 'Cencel',
+    'delete' => 'Delete',
 ];

@@ -112,7 +112,7 @@
         @csrf
         <!-- Name -->
         <div class="mb-3">
-            <label for="name">Ad Soyad</label>
+            <label for="name">Ad</label>
             <input style="background-color: black" id="name" type="text"
                    class="form-control @error('name') is-invalid @enderror"
                    name="name" value="{{ old('name') }}" required autofocus>
@@ -155,7 +155,7 @@
         <!-- Confirm Password -->
         <div class="mb-3">
             <label for="password-confirm">Şifrə (Təkrar)</label>
-            <input style="background-color: black" id="password-confirm" type="password"
+            <input style="background-color: black" name="password" id="password-confirm" type="password"
                    class="form-control" name="password_confirmation" required>
         </div>
 
@@ -163,11 +163,10 @@
         <button type="submit" class="btn-register">
             Qeydiyyat
         </button>
-
+    </form>
         <p class="text-center mt-3" style="color:white;">
             Artıq hesabın var? <a href="{{ route('login') }}">Daxil ol</a>
         </p>
-    </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

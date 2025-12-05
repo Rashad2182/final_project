@@ -6,8 +6,9 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PagesController;
 use App\Http\Controllers\Front\ServiceController;
-use App\Http\Controllers\Front\SubscribeController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
 
 Route::get('/language/{locale}', function ($locale) {
     session()->put('locale', $locale);
@@ -15,7 +16,7 @@ Route::get('/language/{locale}', function ($locale) {
 })->name('locale');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth'], 'as' => 'custom_namespace.'], function () {
-    Lfm::routes();
+    Lfm::class::routes();
 });
 
 Route::group(['middleware' => ['visitor','locale']], function () {
@@ -24,7 +25,7 @@ Route::group(['middleware' => ['visitor','locale']], function () {
     Route::get('/service', [ServiceController::class, 'service'])->name('front.service');
     Route::get('/pages', [PagesController::class, 'pages'])->name('front.pages');
     Route::get('/contact', [ContactController::class, 'contact'])->name('front.contact');
-    Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
+    Route::post('/subscribe', [SubscribeController::class, 'store'])->name('front.subscribe.store');
 });
 
 Auth::routes([
@@ -32,14 +33,15 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::resource('/home_banners', HomeBannerController::class, );
-    Route::get('/subscribes', [SubscribeController::class, 'index'])->name('subscribes');
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth'], 'as' => 'custom_namespace.'], function () {
+    Lfm::routes();
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('back.dashboard');
+    Route::resource('/home_banners', HomeBannerController::class);
+    Route::get('/subscribers', [SubscribeController::class, 'index'])->name('back.subscribers');
+    Route::delete('/subscribers/{id}', [SubscribeController::class, 'destroy'])->name('back.subscriber.destroy');
+});
 
-//Route::get('/2fa/setup', [TwoFAController::class, 'show2FASetup'])->name('2fa.setup');
-//Route::post('/2fa/enable', [TwoFAController::class, 'enable2FA'])->name('2fa.enable');
-//Route::post('/2fa/disable', [TwoFAController::class, 'disable2FA'])->name('2fa.disable');
 

@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('two_f_a_s', function (Blueprint $table) {
-            $table->string('google2fa_secret')->nullable();
-            $table->boolean('is_2fa_enabled')->default(false);
+        Schema::create('subscribers', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->timestamps();
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('two_f_a_s');
+        Schema::dropIfExists('subscribers');
     }
 };

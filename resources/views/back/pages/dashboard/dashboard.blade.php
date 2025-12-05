@@ -1,4 +1,4 @@
-@extends('')
+@extends('back.layouts.admin')
 
 @section('title')
     Dashboard/Home
@@ -865,10 +865,6 @@
                                     </div>
                                 </div>
                             </div>
-@endsection
-
-@section('js')
-
 @endsection
 
 

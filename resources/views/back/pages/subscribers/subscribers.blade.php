@@ -1,4 +1,4 @@
-@extends('')
+@extends('back.layouts.admin')
 
 @section('title')
     Abunə olan İstifadəçilər
@@ -83,7 +83,7 @@
     <div class="col-12">
         <div class="card card-redblack">
             <div class="card-header">
-                <h3 class="card-title">Subscribes</h3>
+                <h3 class="card-title">Subscribers</h3>
             </div>
 
             <div class="card-body border-bottom py-3">
@@ -109,42 +109,29 @@
                     <thead>
                     <tr>
                         <th><input class="form-check-input" type="checkbox"></th>
-                        <th>No</th>
-                        <th>Invoice Subject</th>
-                        <th>Client</th>
-                        <th>VAT No.</th>
-                        <th>Created</th>
-                        <th>Status</th>
-                        <th>Price</th>
-                        <th></th>
+                        <th>#</th>
+                        <th>email</th>
                     </tr>
                     </thead>
-
                     <tbody>
+                    @foreach($subscribers as $key => $subscribe) @endforeach
                     <tr>
                         <td><input class="form-check-input" type="checkbox"></td>
-                        <td>001401</td>
-                        <td>Design Works</td>
-                        <td>Carlson Limited</td>
-                        <td>87956621</td>
-                        <td>15 Dec 2017</td>
-                        <td><span class="badge bg-success">Paid</span></td>
-                        <td>$887</td>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $subscribe->email }}</td>
+                        <td>
+                            <form action="{{ route('back.subscriber.destroy'), ['$subscribe'] }}"
+                                  method="POST"
+                                  style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="remover($(this), @lang('messages.are you sure you want to delete?'), @@lang('messages.delete'), @@lang('messages.cencel');">
+                                    <i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
                         <td class="text-end"><button class="btn btn-sm btn-outline-danger">Actions</button></td>
                     </tr>
-
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>001402</td>
-                        <td>UX Wireframes</td>
-                        <td>Adobe</td>
-                        <td>87956421</td>
-                        <td>12 Apr 2017</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                        <td>$1200</td>
-                        <td class="text-end"><button class="btn btn-sm btn-outline-danger">Actions</button></td>
-                    </tr>
-
                     <!-- ... digərləri eyni qaydada ... -->
                     </tbody>
                 </table>
@@ -170,6 +157,26 @@
 @endsection
 
 @section('js')
+    <script>
+        function remover(myThis, title, confirmButtonText, cancelButtonText) {
+            let form = myThis.closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: title,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: confirmButtonText,
+                cancelButtonText: cancelButtonText
+            })
+                .then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        form.submit();
+                    }
+                });
+        }
+    </script>
 @endsection
 
 

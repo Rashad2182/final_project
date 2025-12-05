@@ -34,7 +34,7 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-uppercase mb-4">@lang('messages.newsletter')</h4>
                 <div class="position-relative mb-4">
-                    <form action="{{ route('subscribe.store') }}" method="POST">
+                    <form action="{{ route('front.subscribe.store') }}" method="POST">
                     @csrf
                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" id="subscribeEmail" placeholder="@lang('messages.your email')">
                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" id="subscribeBtn">@lang('messages.subscribe')
@@ -71,6 +71,3 @@
 <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-@section('js')
-
-@endsection

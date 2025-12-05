@@ -10,8 +10,6 @@
 
 @section('content')
 
-
-
     <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -354,7 +352,4 @@
     <!-- Testimonial End -->
 @endsection
 
-@section('js')
-
-@endsection
 

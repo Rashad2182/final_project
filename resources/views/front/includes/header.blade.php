@@ -1,50 +1,51 @@
+@php use App\Models\User; @endphp
 <style>
-        .lang-dropdown {
-            position: relative;
-            margin-right: 20px;
-        }
+    .lang-dropdown {
+        position: relative;
+        margin-right: 20px;
+    }
 
-        .lang-btn {
-            background: #000;
-            color: #fff;
-            border: 2px solid #dc3545;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .lang-btn {
+        background: #000;
+        color: #fff;
+        border: 2px solid #dc3545;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-        .lang-btn:hover {
-            background: #dc3545;
-        }
+    .lang-btn:hover {
+        background: #dc3545;
+    }
 
-        .lang-menu {
-            position: absolute;
-            top: 45px;
-            background: #111;
-            width: 140px;
-            border-radius: 6px;
-            display: none;
-            padding: 6px 0;
-            border: 1px solid #dc3545;
-            z-index: 999;
-        }
+    .lang-menu {
+        position: absolute;
+        top: 45px;
+        background: #111;
+        width: 140px;
+        border-radius: 6px;
+        display: none;
+        padding: 6px 0;
+        border: 1px solid #dc3545;
+        z-index: 999;
+    }
 
-        .lang-item {
-            padding: 8px 12px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
+    .lang-item {
+        padding: 8px 12px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
 
-        .lang-item:hover {
-            background: #dc3545;
-        }
-    </style>
+    .lang-item:hover {
+        background: #dc3545;
+    }
+</style>
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn"
@@ -57,11 +58,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ route('front.home') }}" class="nav-item nav-link {{ request()->routeIs('front.home') ? 'active' : '' }}">@lang('messages.home')</a>
-            <a href="{{ route('front.about') }}" class="nav-item nav-link {{ request()->routeIs('front.about') ? 'active' : '' }}">@lang('messages.about')</a>
-            <a href="{{ route('front.service') }}" class="nav-item nav-link {{ request()->routeIs('front.service') ? 'active' : '' }}">@lang('messages.service')</a>
+            <a href="{{ route('front.home') }}"
+               class="nav-item nav-link {{ request()->routeIs('front.home') ? 'active' : '' }}">@lang('messages.home')</a>
+            <a href="{{ route('front.about') }}"
+               class="nav-item nav-link {{ request()->routeIs('front.about') ? 'active' : '' }}">@lang('messages.about')</a>
+            <a href="{{ route('front.service') }}"
+               class="nav-item nav-link {{ request()->routeIs('front.service') ? 'active' : '' }}">@lang('messages.service')</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle {{ request()->routeIs('front.pages') ? 'active' : '' }}">@lang('messages.pages')</a>
+                <a href="#"
+                   class="nav-link dropdown-toggle {{ request()->routeIs('front.pages') ? 'active' : '' }}">@lang('messages.pages')</a>
                 <div class="dropdown-menu m-0">
                     <a href="" class="dropdown-item">@lang('messages.pricing plan')</a>
                     <a href="" class="dropdown-item">@lang('messages.our programists')</a>
@@ -69,7 +74,8 @@
                     <a href="" class="dropdown-item">@lang('messages.testimonials')</a>
                 </div>
             </div>
-            <a href="{{ route('front.contact') }}" class="nav-item nav-link {{ request()->routeIs('front.contact') ? 'active' : '' }}">@lang('messages.contact')</a>
+            <a href="{{ route('front.contact') }}"
+               class="nav-item nav-link {{ request()->routeIs('front.contact') ? 'active' : '' }}">@lang('messages.contact')</a>
         </div>
 
         <!-- 🌍 Start Language Dropdown -->
@@ -113,9 +119,41 @@
                 </span>
             </div>
         </div>
+        @if(auth()->check()===true)
+            <div class="dropdown">
+                <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block dropdown-toggle"
+                   href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user me-3"></i> {{ auth()->user()->name }}
+                </a>
+
+                <ul style="background-color: black" class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-user me-2 text-success"></i> Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-cog me-2 text-warning"></i> Settings
+                        </a>
+                    </li>
+
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li>
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}">
+                            <i class="fa fa-sign-out-alt me-2"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        @else
         <!-- 🌍 End Language Dropdown -->
-        <a href="{{ route('register') }}" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
+        <a href="{{ route('register') }}"
+           class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
                 class="fa fa-arrow-right ms-3"></i></a>
+        @endif
     </div>
 </nav>
 <!-- Navbar End -->

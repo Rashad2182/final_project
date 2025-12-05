@@ -26,4 +26,7 @@ return[
     'all rights reserved' => 'Bütün Hüquqlar Qorunur',
     'loading' => 'Yüklənir',
     'your email' => 'E-Poçt ünvanınız',
+    'are you sure you want to delete?' => 'Silmək istədiyinizdən əminsiniz?',
+    'cencel' => 'Ləğv et',
+    'delete' => 'Sil',
 ];
