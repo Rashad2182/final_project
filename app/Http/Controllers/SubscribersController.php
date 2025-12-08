@@ -29,7 +29,13 @@ class SubscribersController extends Controller
      */
     public function store(StoreSubscribersRequest $request)
     {
-        //
+        Subscribers::create([
+                'email' => $request->email,
+        ]);
+        return response()->json([
+            'success' => true,
+            'errors' => null,
+        ]);
     }
 
     /**

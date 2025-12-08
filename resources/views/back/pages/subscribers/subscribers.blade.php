@@ -126,7 +126,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"
-                                        onclick="remover($(this), @lang('messages.are you sure you want to delete?'), @@lang('messages.delete'), @@lang('messages.cencel');">
+                                        onclick="remover($(this), @lang('messages.are you sure you want to delete?'), @lang('messages.delete'), @lang('messages.cencel');">
                                     <i class="fa fa-trash"></i></button>
                             </form>
                         </td>

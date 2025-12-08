@@ -66,13 +66,7 @@
 <script src="{{ asset('it-project') }}/lib/easing/easing.min.js"></script>
 <script src="{{ asset('it-project') }}/lib/waypoints/waypoints.min.js"></script>
 <script src="{{ asset('it-project') }}/lib/owlcarousel/owl.carousel.min.js"></script>
-{{--Ajax cdn add--}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Template Javascript -->
-<script src="{{ asset('it-project') }}/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-<!-- Toastr JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('#subscribeBtn').click(function () {
@@ -99,6 +93,13 @@
         });
     });
 </script>
+{{--Ajax cdn add--}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Template Javascript -->
+<script src="{{ asset('it-project') }}/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @yield('js')
 </body>
 </html>

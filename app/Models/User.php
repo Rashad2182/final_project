@@ -15,10 +15,6 @@ class User extends Authenticatable
 
     use HasFactory, Notifiable;
 
-    protected Role $role;
-    public mixed $is_2fa_enabled;
-    public mixed $is_2fa_verified;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -57,6 +53,6 @@ class User extends Authenticatable
 
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Roles::class);
    }
 }
