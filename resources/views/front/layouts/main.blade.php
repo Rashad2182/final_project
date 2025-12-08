@@ -16,6 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap"
           rel="stylesheet">
+    {{--Ajax cdn add--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{{ asset('it-project') }}/js/main.js"></script>
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -31,12 +35,10 @@
     <link href="{{ asset('it-project') }}/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Toastr CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-
     <!-- Template Stylesheet -->
     <link href="{{ asset('it-project') }}/css/style.css" rel="stylesheet">
+    <!-- Toastr JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     @yield('css')
 </head>
 
@@ -67,40 +69,17 @@
 <script src="{{ asset('it-project') }}/lib/waypoints/waypoints.min.js"></script>
 <script src="{{ asset('it-project') }}/lib/owlcarousel/owl.carousel.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#subscribeBtn').click(function () {
-            let email = $('#subscribeEmail').val();
-
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('front.subscribe.store') }}',
-                data: {
-                    'email': email,
-                    '_token': '{{ csrf_token() }}'
-                },
-                success: function (response) {
-                    $('#subscribeEmail').val('');
-
-                    toastr.success(@lang('toaster.subscribe success');
-                },
-                error : function (myErrors) {
-                    $.each(myErrors.responseJSON.errors,function (key, value) {
-                        toastr.error(value,@lang('toaster.subscribe error');
-                    })
-                }
-            });
-        });
-    });
-</script>
-{{--Ajax cdn add--}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Template Javascript -->
-<script src="{{ asset('it-project') }}/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-<!-- Toastr JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @yield('js')
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- toastr js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </body>
 </html>
 

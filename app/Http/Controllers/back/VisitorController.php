@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\back;
 
-use App\Models\Visitor;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVisitorRequest;
 use App\Http\Requests\UpdateVisitorRequest;
+use App\Models\Visitor;
 
 class VisitorController extends Controller
 {

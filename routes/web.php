@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PagesController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\SubscribersController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 
@@ -19,13 +20,14 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth'], 'as' 
     Lfm::class::routes();
 });
 
+
 Route::group(['middleware' => ['visitor','locale']], function () {
     Route::get('/', [HomeController::class, 'home'])->name('front.home');
     Route::get('/about', [AboutController::class, 'about'])->name('front.about');
     Route::get('/service', [ServiceController::class, 'service'])->name('front.service');
     Route::get('/pages', [PagesController::class, 'pages'])->name('front.pages');
     Route::get('/contact', [ContactController::class, 'contact'])->name('front.contact');
-    Route::post('/subscribe', [SubscribeController::class, 'store'])->name('front.subscribe.store');
+    Route::post('/subscribe', [SubscribersController::class, 'store'])->name('front.subscribe.store');
 });
 
 Auth::routes([

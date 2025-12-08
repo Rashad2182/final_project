@@ -1,7 +1,7 @@
 @extends('front.layouts.main')
 
 @section('title')
-    Home
+    @lang('messages.home')
 @endsection
 
 @section('css')

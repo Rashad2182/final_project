@@ -1,9 +1,12 @@
 <?php
 
-return[
-    'subscribe success' => 'Abunə oldunuz!',
-    'subscribe error' => 'Əməliyyat uğursuz oldu!',
-    'subscribe info' => 'Abunəlik haqqında məlumat',
-    'subscribe warning' => 'Abunə xəbərdarlığı',
-    'subscribe danger' => 'Abunə təhlükəsi',
+return [
+    'success' => 'Abunə oldunuz!',
+    'error' => 'Əməliyyat uğursuz oldu!',
+    'info' => 'Abunəlik haqqında məlumat',
+    'warning' => 'Abunə xəbərdarlığı',
+    'danger' => 'Abunə təhlükəsi',
+    'delete successed' => 'Abunəçi uğurla silindi!',
+    'incorrect' => 'E-poçt ünvanı düzgün yazılmayıb!',
+    'empty' => 'E-poçt ünvanı boş olmamalıdır!'
 ];

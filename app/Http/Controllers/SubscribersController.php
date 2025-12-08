@@ -13,7 +13,15 @@ class SubscribersController extends Controller
      */
     public function index()
     {
-        //
+        if (request('search')) {
+            $subscribes = Subscribe::where('email', 'like', '%' . request('search') . '%')->orderBy('created_at', 'desc')->paginate(10);
+        } else {
+            $subscribes = Subscribe::orderBy('created_at', 'desc')->paginate(10);
+        }
+
+        return view('back.pages.subscribe.index', [
+            'subscribes' => $subscribes
+        ]);
     }
 
     /**
@@ -29,13 +37,19 @@ class SubscribersController extends Controller
      */
     public function store(StoreSubscribersRequest $request)
     {
-        Subscribers::create([
-                'email' => $request->email,
+        Subscribe::create([
+            'email' => $request->email
         ]);
+
         return response()->json([
-            'success' => true,
-            'errors' => null,
-        ]);
+            'subscribe success' => __('toaster.subscribe success'),
+            'subscribe danger' => __('toaster.subscribe danger'),
+            'subscribe error' => __('toaster.subscribe error'),
+            'subscribe info' => __('toaster.subscribe info'),
+            'subscribe warning' => __('toaster.subscribe warning'),
+            'empty' => __('toaster.empty'),
+            'incorrect' => __('toaster.incorrect'),
+        ], 201);
     }
 
     /**
@@ -65,8 +79,12 @@ class SubscribersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Subscribers $subscribers)
+    public function destroy(Subscribers $id)
     {
-        //
+        $subscribe = Subscribe::where('id', $id)->firstOrFail();
+
+        $subscribe->delete();
+
+        return redirect()->back()->with('success', __('toaster.delete successed'));
     }
 }

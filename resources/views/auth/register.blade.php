@@ -5,14 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('it-project') }}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('it-project') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('it-project') }}/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <title>@lang('messages.register')</title>
     <style>
         body {
             background-size: cover;
@@ -106,16 +122,16 @@
 </head>
 <body>
 <div class="register-card">
-    <h2><i class="fa fa-user"></i> Qeydiyyat</h2>
+    <h2><i class="fa fa-user"></i>@lang('messages.sign up')</h2>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <!-- Name -->
         <div class="mb-3">
-            <label for="name">Ad</label>
+            <label for="name">@lang('messages.name')</label>
             <input style="background-color: black" id="name" type="text"
                    class="form-control @error('name') is-invalid @enderror"
-                   name="name" value="{{ old('name') }}" required autofocus>
+                   name="name" value="{{ old('name') }}" required>
 
             @error('name')
             <span class="invalid-feedback" role="alert" style="display:block;color:red">
@@ -126,7 +142,7 @@
 
         <!-- Email -->
         <div class="mb-3">
-            <label for="email">Email</label>
+            <label for="email">@lang('messages.email')</label>
             <input style="background-color: black" id="email" type="email"
                    class="form-control @error('email') is-invalid @enderror"
                    name="email" value="{{ old('email') }}" required>
@@ -140,7 +156,7 @@
 
         <!-- Password -->
         <div class="mb-3">
-            <label for="password">Şifrə</label>
+            <label for="password">@lang('messages.password')</label>
             <input style="background-color: black" id="password" type="password"
                    class="form-control @error('password') is-invalid @enderror"
                    name="password" required>
@@ -154,18 +170,18 @@
 
         <!-- Confirm Password -->
         <div class="mb-3">
-            <label for="password-confirm">Şifrə (Təkrar)</label>
-            <input style="background-color: black" name="password" id="password-confirm" type="password"
+            <label for="password-confirm">@lang('messages.password') (@lang('messages.confirm'))</label>
+            <input style="background-color: black" id="password-confirm" type="password"
                    class="form-control" name="password_confirmation" required>
         </div>
 
         <!-- Button -->
         <button type="submit" class="btn-register">
-            Qeydiyyat
+            @lang('messages.sign up') <i class="fa-solid fa-paper-plane"></i>
         </button>
     </form>
         <p class="text-center mt-3" style="color:white;">
-            Artıq hesabın var? <a href="{{ route('login') }}">Daxil ol</a>
+            @lang('messages.do you already have an account?') <a href="{{ route('login') }}">@lang('messages.login')</a>
         </p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

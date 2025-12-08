@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-          $table->unsignedBigInteger('role_id')->after('id');
-          $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+        Schema::table('visitors', function (Blueprint $table) {
+            $table->string('device')->nullable()->after('ip_address');
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('role_id');
-            $table->dropColumn('role_id');
+        Schema::table('visitors', function (Blueprint $table) {
+            ;$table->dropColumn('device');
         });
     }
 };

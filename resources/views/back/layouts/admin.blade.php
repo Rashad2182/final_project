@@ -1,12 +1,4 @@
 <!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.0.0-beta20
-* @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
 <html lang="en">
 
 <head>
@@ -55,8 +47,8 @@
 <script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
 <script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
 <!-- Tabler Core -->
-<script src="{{ asset('dashboard') }}/tabler.min.js?1692870487" defer></script>
-<script src="{{ asset('dashboard') }}/js/demo.min.js?1692870487" defer></script>
+<script src="js/tabler.min.js?1692870487" defer></script>
+<script src="js/demo.min.js?1692870487" defer></script>
 <script>
     // @formatter:off
     document.addEventListener("DOMContentLoaded", function () {

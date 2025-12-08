@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -43,30 +47,42 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return Factory|View|\Illuminate\View\View
      */
-    protected function validator(array $data)
+    protected function viewRegister()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return view('auth.register');
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param array $data
-     * @return \App\Models\User
+     * @param Request $request
+     * @return RedirectResponse|Redirector
      */
-    protected function create(array $data)
+    protected function register(Request $request): Redirector|RedirectResponse
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
         ]);
+
+        $role = User::count() === 0 ? 1 : 2;
+
+        $user = User::create([
+            'role_id' => $role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        auth()->login($user);
+
+        if ($user->role_id == 1) {
+            return redirect('/admin/dashboard');
+        }
+
+        return redirect('/');
     }
 }

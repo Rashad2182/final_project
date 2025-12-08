@@ -7,12 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <title>Login</title>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('it-project') }}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('it-project') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('it-project') }}/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <title>@lang('messages.login')</title>
     <style>
         body {
             background: linear-gradient(135deg, #2b0000, #660000, #000000);
@@ -107,7 +124,7 @@
 
 
         <div class="mb-3">
-            <label>Email</label>
+            <label>@lang('messages.email')</label>
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                    required autofocus/>
             @error('email')
@@ -117,7 +134,7 @@
 
 
         <div class="mb-3">
-            <label>Şifrə</label>
+            <label>@lang('messages.password')</label>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                    name="password" required/>
             @error('password')
@@ -128,16 +145,16 @@
 
         <div class="mb-3 form-check">
             <input class="form-check-input" type="checkbox" name="remember" id="remember"/>
-            <label class="form-check-label" for="remember">Yadda saxla</label>
+            <label class="form-check-label" for="remember">@lang('messages.remember me')</label>
         </div>
 
 
-        <button class="btn-login" type="submit"><i class="fa-solid fa-right-to-bracket me-2"></i>Daxil ol</button>
+        <button class="btn-login" type="submit"><i class="fa-solid fa-right-to-bracket me-2"></i>@lang('messages.login')</button>
 
 
         @if (Route::has('register'))
             <div class="mt-3 text-center">
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('register') }}">@lang('messages.register')</a>
             </div>
         @endif
     </form>

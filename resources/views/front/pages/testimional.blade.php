@@ -1,7 +1,7 @@
 @extends('front.layouts.main')
 
 @section('title')
-    Testimionals
+    @lang('messages.testimonials')
 @endsection
 
 @section('css')

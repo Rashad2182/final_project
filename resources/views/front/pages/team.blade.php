@@ -1,7 +1,7 @@
 @extends('')
 
 @section('title')
-    Team
+    @lang('messages.team')
 @endsection
 
 @section('css')

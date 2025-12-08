@@ -1,7 +1,7 @@
 @extends('front.layouts.main')
 
 @section('title')
-    Contact
+    @lang('messages.contact')
 @endsection
 
 @section('css')
@@ -71,8 +71,8 @@
             <div class="contact-card">
 
                 <div class="contact-title">@lang('messages.contact us')</div>
-                <p class="text-center text-secondary mb-4">
-                    Bizimlə əlaqə saxlayın – mesajınızı göndərin!
+                <p class="text-center text-secondary mb-4" style="color: white">
+                   --------------------------------------
                 </p>
 
                 <form action="#" method="POST">
@@ -80,7 +80,7 @@
                     <!-- NAME -->
                     <div class="mb-3 position-relative">
                         <i class="input-icon bi bi-person-fill"></i>
-                        <input type="text" class="form-control" placeholder="@lang('messages.fullname')" required>
+                        <input type="text" class="form-control" placeholder="@lang('messages.name')" required>
                     </div>
 
                     <!-- EMAIL -->

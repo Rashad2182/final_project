@@ -1,8 +1,11 @@
 <?php
 return[
-    'subscribe success' => 'Subscribe success!',
-    'subscribe error' => 'Subscribe error!',
-    'subscribe info' => 'Subscribe info',
-    'subscribe warning' => 'Subscribe warning',
-    'subscribe danger' => 'Subscribe danger',
+    'success' => 'Subscribe success',
+    'error' => 'Subscribe error',
+    'info' => 'Subscribe info',
+    'warning' => 'Subscribe warning',
+    'danger' => 'Subscribe danger',
+    'delete successed' => 'Subscriber delete successed!',
+    'incorrect' => 'The email address is incorrect!',
+    'empty' => 'Email address must not be empty!!'
 ];
