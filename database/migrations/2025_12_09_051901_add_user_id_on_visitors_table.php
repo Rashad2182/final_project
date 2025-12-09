@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('visitors', function (Blueprint $table) {
-            $table->string('device')->nullable()->after('ip_address');
+       $table->unsignedBigInteger('user_id')->after('id')->isNotEmpty();
+
+       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
         Schema::table('visitors', function (Blueprint $table) {
-            $table->dropColumn('device');
+           $table->dropForeign('visitors_user_id_foreign');
         });
     }
 };

@@ -119,7 +119,7 @@
                 </span>
             </div>
         </div>
-        @if(auth()->check()===true)
+        @if(auth()->check())
             <div class="dropdown">
                 <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block dropdown-toggle"
                    href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
