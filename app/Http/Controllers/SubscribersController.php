@@ -14,12 +14,12 @@ class SubscribersController extends Controller
     public function index()
     {
         if (request('search')) {
-            $subscribes = Subscribe::where('email', 'like', '%' . request('search') . '%')->orderBy('created_at', 'desc')->paginate(10);
+            $subscribes = Subscribeers::where('email', 'like', '%' . request('search') . '%')->orderBy('created_at', 'desc')->paginate(10);
         } else {
-            $subscribes = Subscribe::orderBy('created_at', 'desc')->paginate(10);
+            $subscribes = Subscribers::orderBy('created_at', 'desc')->paginate(10);
         }
 
-        return view('back.pages.subscribe.index', [
+        return view('back.pages.subscribers.subscribers', [
             'subscribes' => $subscribes
         ]);
     }

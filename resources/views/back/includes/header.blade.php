@@ -9,7 +9,7 @@
                 <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
                    data-bs-toggle="tooltip" data-bs-placement="bottom">
                     <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    <svg xmlns="" class="icon" width="24" height="24" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                          stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -32,7 +32,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                    aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm" style="background-image: url({{ asset('it-project/img/photo_2025-08-09_02-17-16.jpg') }})"></span>
                     <div class="d-none d-xl-block ps-2">
                         <div>{{ auth()->user()->name }}</div>
                         <div class="mt-1 small text-secondary">Web developer</div>
@@ -50,7 +50,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             <div>
-                <form action="./" method="get" autocomplete="off" novalidate>
+                <form action="" method="GET" autocomplete="off" novalidate>
                     <div class="input-icon">
                 <span class="input-icon-addon">
                   <!-- Download SVG icon from http://tabler-icons.io/i/search -->

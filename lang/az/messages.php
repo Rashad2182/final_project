@@ -10,7 +10,7 @@ return[
     'team' => 'Team',
     'our programists' => 'Bizim Programistlər',
     'working hours' => 'İş Saatları',
-    'testimonials' => 'Qiymətləndirmələr',
+    'testimonials' => 'Rəylər',
     'get in touch' => 'Əlaqə Saxlamaq Üçün',
     'quick links' => 'Sürətli Bağlantılar',
     'contact us' => 'Bizimlə Əlaqə Saxlayın',

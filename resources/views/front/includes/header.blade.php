@@ -152,7 +152,7 @@
 
                     <li>
                         <a class="dropdown-item" href="#">
-                            <i class="fa fa-cog me-2 text-warning"></i> Settings
+                            <i class="fa fa-cog me-2 text-warning"></i> Settings`
                         </a>
                     </li>
 
