@@ -46,6 +46,23 @@
         background: #dc3545;
     }
 </style>
+<style>
+    .user-btn {
+        background: #000;
+        color: #ff3b3b;
+        border: 1px solid #b90000;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+
+    .user-btn:hover {
+        background: #1a0000;
+        color: #ff0000;
+        border-color: #ff0000;
+        box-shadow: 0 0 10px rgba(255,0,0,.6);
+    }
+</style>
+
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn"
@@ -121,7 +138,7 @@
         </div>
         @if(auth()->check())
             <div class="dropdown">
-                <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block dropdown-toggle"
+                <a class="btn rounded-0 py-2 px-lg-4 d-none d-lg-block dropdown-toggle user-btn"
                    href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-user me-3"></i> {{ auth()->user()->name }}
                 </a>

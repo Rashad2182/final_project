@@ -1,4 +1,4 @@
-@extends('back.layouts.admin')
+@extends('back.layouts.master')
 
 @section('title')
     Abunə olan İstifadəçilər

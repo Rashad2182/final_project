@@ -19,7 +19,7 @@ class Admin
         if (auth()->check() && auth()->user()->role() === 'user') {
             redirect('/');
         }elseif(auth()->check() && auth()->user()->role() === 'admin'){
-            redirect('/admin/dashboard');
+            redirect('/dashboard');
         }else{
             abort(403,'Unauthorized!');
         }

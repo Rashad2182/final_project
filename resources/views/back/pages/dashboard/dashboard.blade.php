@@ -1,7 +1,7 @@
-@extends('back.layouts.admin')
+@extends('back.layouts.master')
 
 @section('title')
-    Dashboard/Home
+    Əsas Panel
 @endsection
 
 @section('css')
@@ -12,11 +12,15 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Users summary</h3>
+                <h3 class="card-title">Users Summary</h3>
                 <div id="chart-mentions" class="chart-lg"></div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
 @endsection
 
 
