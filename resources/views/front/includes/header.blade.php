@@ -59,7 +59,7 @@
         background: #1a0000;
         color: #ff0000;
         border-color: #ff0000;
-        box-shadow: 0 0 10px rgba(255,0,0,.6);
+        box-shadow: 0 0 10px rgba(255, 0, 0, .6);
     }
 </style>
 
@@ -143,9 +143,10 @@
                     <i class="fa-solid fa-user me-3"></i> {{ auth()->user()->name }}
                 </a>
 
-                <ul style="background-color: black" class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
+                <ul style="background-color: black" class="dropdown-menu dropdown-menu-end shadow"
+                    aria-labelledby="userMenu">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('dashboard') }}">
                             <i class="fa fa-user me-2 text-success"></i> Profile
                         </a>
                     </li>
@@ -156,20 +157,26 @@
                         </a>
                     </li>
 
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
 
                     <li>
-                        <a class="dropdown-item text-danger" href="{{ route('logout') }}">
-                            <i class="fa fa-sign-out-alt me-2"></i> Logout
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out-alt me-2"></i> Logout
                         </a>
                     </li>
                 </ul>
             </div>
         @else
-        <!-- 🌍 End Language Dropdown -->
-        <a href="{{ route('register') }}"
-           class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
-                class="fa fa-arrow-right ms-3"></i></a>
+            <!-- 🌍 End Language Dropdown -->
+            <a href="{{ route('register') }}"
+               class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
+                    class="fa fa-arrow-right ms-3"></i></a>
         @endif
     </div>
 </nav>

@@ -17,6 +17,7 @@ class Visitor
     {
         \App\Models\Visitor::create([
             'ip_address' => $request->ip(),
+            'user_agent' => $request->header('User-Agent'),
         ]);
         return $next($request);
     }

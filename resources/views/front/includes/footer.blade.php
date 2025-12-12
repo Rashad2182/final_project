@@ -1,28 +1,4 @@
-@section('css')
-    <style>
-        /* =============  TOASTR COLORS FIX ============= */
 
-        #toast-container .toast-success {
-            background-color: #28a745 !important;
-            color: #fff !important;
-        }
-
-        #toast-container .toast-error {
-            background-color: #dc3545 !important;
-            color: #fff !important;
-        }
-
-        #toast-container .toast-info {
-            background-color: #17a2b8 !important;
-            color: #fff !important;
-        }
-
-        #toast-container .toast-warning {
-            background-color: #ffc107 !important;
-            color: #212529 !important;
-        }
-    </style>
-@endsection
 <!-- Footer Start -->
 <div class="container-fluid bg-secondary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -59,18 +35,18 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-uppercase mb-4">@lang('messages.newsletter')</h4>
                 <div class="position-relative mb-4">
-                    <form action="{{ route('front.subscribe.store') }}" method="POST">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" id="subscribeEmail" placeholder="@lang('messages.your email')">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" id="subscribeBtn">@lang('messages.subscribe')
+                    @csrf
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" name="email"
+                           id="subscribeEmail" placeholder="@lang('messages.your email')">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"
+                            id="subscribeBtn">@lang('messages.subscribe')
                         <i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
                 </div>
                 <div class="d-flex pt-1 m-n1">
                     <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i
-                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg-square btn-dark text-primary m-1" href=""><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -93,6 +69,7 @@
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
 @section('js')
     <script>
         $(document).ready(function () {
@@ -108,29 +85,29 @@
                         _token: '{{ csrf_token() }}'
                     },
 
-                    success: function () {
+                    success: function (response) {
                         $('#subscribeEmail').val('');
-
-                        toastr.success("@lang('toaster.success')");
+                        toastr.success(response.success);
                     },
-
-                    error : function (errors) {
-                        $.each(errors.responseJSON.errors, function (key, value) {
-                            toastr.error(value, "@lang('toaster.error')");
-                        })
+                    error: function (xhr) {
+                        if (xhr.status === 422 && xhr.responseJSON.errors) {
+                            let firstError = Object.values(xhr.responseJSON.errors)[0][0];
+                            toastr.error(firstError);
+                        } else {
+                            toastr.error("@lang('toaster.error')");
+                        }
                     },
                 });
 
             });
         });
     </script>
-
-
-    toastr.options = {
-    "positionClass": "toast-right",
-    "closeButton": true,
-    // "progressBar": true,
-    "timeOut": "3000"
-    };
+    <script>
+        toastr.options = {
+            "positionClass": "toast-top-right",
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": "5000"
+        };
     </script>
 @endsection

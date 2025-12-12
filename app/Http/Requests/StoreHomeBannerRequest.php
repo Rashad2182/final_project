@@ -31,6 +31,7 @@ class StoreHomeBannerRequest extends FormRequest
             'title' => ['required' , 'string' , 'max:255' ],
             'subtitle_address' => ['required' , 'string' , 'max:255' ],
             'subtitle_phone' => ['required' , 'string' , 'max:255' ],
+            'order_no' => ['required' , 'integer' , 'min:0' , 'max:1000' ],
         ];
     }
 }

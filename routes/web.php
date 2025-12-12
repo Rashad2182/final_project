@@ -38,7 +38,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth'], 'as' 
     Lfm::routes();
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth','routes'=>'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/subscribers', [SubscribersController::class, 'index'])->name('back.subscribers');
     Route::delete('/subscribers/{id}', [SubscribersController::class, 'destroy'])->name('back.subscriber.destroy');

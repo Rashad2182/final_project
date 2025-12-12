@@ -27,10 +27,6 @@ class SubscribersController extends Controller
      */
     public function create(StoreSubscribersRequest $request)
     {
-        Subscribers::create([
-            'email' => $request->email
-        ]);
-        return response()->json(['message' => 'success'], 201);
     }
 
     /**
@@ -39,16 +35,11 @@ class SubscribersController extends Controller
     public function store(StoreSubscribersRequest $request)
     {
         Subscribers::create([
-            'email' => $request->email
+            'email' => $request->email,
         ]);
+
         return response()->json([
-            'subscribe danger' => __('toaster.danger'),
-            'subscribe error' => __('toaster.error'),
-            'subscribe info' => __('toaster.info'),
-            'subscribe warning' => __('toaster.warning'),
-            'empty' => __('toaster.empty'),
-            'incorrect' => __('toaster.incorrect'),
-            'success' => __('toaster.success'),
+            'message' => __('toaster.success'),
         ], 201);
     }
 

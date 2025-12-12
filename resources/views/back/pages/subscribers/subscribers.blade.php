@@ -5,104 +5,128 @@
 @endsection
 
 @section('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
-        /* Qırmızı neon borderlı card */
-        .card-redblack {
-            background: #0d0d0d;
-            border: 2px solid #b10000;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+        .table-wrap {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Header */
-        .card-redblack .card-header {
-            background: linear-gradient(90deg, #b10000, #4d0000);
-            border-bottom: 2px solid #b10000;
-            color: white;
-            font-weight: bold;
+        .table thead th {
+            background: #f8fafc;
+            border-bottom: 0;
+            font-size: 13px;
             letter-spacing: .5px;
+            text-transform: uppercase;
+            color: #6c757d;
         }
 
-        /* Table */
-        .table-redblack {
-            color: #e4e4e4;
-        }
-
-        .table-redblack thead {
-            background: #1a0000;
-            color: #ff4444;
-            border-bottom: 2px solid #b10000;
-        }
-
-        .table-redblack tbody tr {
-            background: #0f0f0f;
+        .table tbody tr:hover {
+            background: rgba(13, 110, 253, 0.06);
             transition: 0.2s;
         }
 
-        .table-redblack tbody tr:hover {
-            background: #1a0000;
-            color: #ff4444;
-            transform: scale(1.01);
-        }
-
-        /* Search + Show input */
-        .dark-input {
-            background: #111;
-            border: 1px solid #b10000;
-            color: #fff;
-        }
-
-        .dark-input:focus {
-            background: #1a0000;
-            border-color: #ff0000;
-            color: white;
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
-        }
-
-        /* Pagination */
-        .pagination .page-link {
-            background: #111;
-            border: 1px solid #b10000;
-            color: #ff4d4d;
-        }
-
-        .pagination .page-item.active .page-link {
-            background: #b10000;
-            border-color: #ff0000;
-            color: #fff;
-        }
-
-        .pagination .page-link:hover {
-            background: #4d0000;
-            color: #fff;
+        .search-box {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
         }
     </style>
 @endsection
 
 @section('content')
+    <div class="container mt-4">
+        <div class="table-wrap">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0 fw-bold">Subscribers</h4>
+                <form action="">
+                    <div class="input-group search-box" style="width:300px;">
+                <span class="input-group-text bg-white border-0">
+                    <i class="bi bi-search"></i>
+                </span>
+                        <input id="searchInput" type="text" class="form-control border-0"
+                               placeholder="Axtar... (ID / Email)">
+                    </div>
+                </form>
 
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th class="text-end">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    @foreach($subscribers as $key => $subscriber)
+                        <tr>
+                            <td>{{ $key + 1 }} </td>
+                            <td>{{ $subscriber->email }}</td>
+                            <td class="text-end">
+                                <form action="{{ route('back.subscriber.destroy', [$subscriber->id]) }}" method="POST"
+                                      class="delete-form d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" id="deleteBtn" class="btn btn-sm btn-danger"
+                                            style="width: 50px;height: 30px;">
+                                       Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('js')
     <script>
-        function remover(myThis, title, confirmButtonText, cancelButtonText) {
-            let form = myThis.closest("form");
-            event.preventDefault();
-            Swal.fire({
-                title: title,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: confirmButtonText,
-                cancelButtonText: cancelButtonText
-            })
-                .then((willDelete) => {
-                    if (willDelete.isConfirmed) {
+        const input = document.getElementById("searchInput");
+        const rows = document.querySelectorAll("#tableBody tr");
+
+        input.addEventListener("keyup", function () {
+            const q = input.value.toLowerCase();
+
+            rows.forEach(row => {
+                const id = row.children[0].innerText.toLowerCase();
+                const email = row.children[1].innerText.toLowerCase();
+
+                if (id.includes(q) || email.includes(q)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Silmək istədiyinizdən əminsiniz?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Bəli',
+                    cancelButtonText: 'Xeyr'
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         form.submit();
                     }
                 });
-        }
+            });
+        });
     </script>
 @endsection
 

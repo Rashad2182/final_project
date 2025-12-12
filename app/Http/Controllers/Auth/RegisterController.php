@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected string $redirectTo = '/';
+    protected string $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.

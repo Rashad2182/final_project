@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Roles;
 use Closure;
+use Couchbase\Role;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,13 +17,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        if (auth()->check() && auth()->user()->role() === 'user') {
-            redirect('/');
-        }elseif(auth()->check() && auth()->user()->role() === 'admin'){
-            redirect('/dashboard');
-        }else{
-            abort(403,'Unauthorized!');
+        if (auth()->check() && auth()->user()->role()->id === 1) {
+           return redirect()->route('dashboard');
+        } elseif (auth()->check() && auth()->user()->role()->id === 2) {
+            return redirect()->route('front.home');
+        } else {
+            return $next($request);
         }
 
     }

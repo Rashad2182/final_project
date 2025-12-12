@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Back;
 
-use App\Models\HomeBanner;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHomeBannerRequest;
 use App\Http\Requests\UpdateHomeBannerRequest;
+use App\Models\HomeBanner;
 use App\traits\FileUploader;
 
 class HomeBannerController extends Controller
@@ -17,9 +18,7 @@ class HomeBannerController extends Controller
     {
         $banners = HomeBanner::orderBy('order_no', 'asc')->where('locale', request('locale'))->get();
 
-        return view('back.pages.home-banner.home_banners', compact('banners'), [
-            'banners' => $banners,
-        ]);
+        return view('back.pages.home-banner.home_banners', compact('banners'));
     }
 
     /**
@@ -44,6 +43,7 @@ class HomeBannerController extends Controller
             'title' => $request->title,
             'subtitle_address' => $request->subtitle_address,
             'subtitle_phone' => $request->subtitle_phone,
+            'order_no' => $request->order_no,
         ]);
         return redirect()->route('home_banners.index');
     }
