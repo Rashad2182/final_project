@@ -16,7 +16,7 @@ class HomeBannerController extends Controller
      */
     public function index()
     {
-        $banners = HomeBanner::orderBy('order_no', 'asc')->where('locale', request('locale'))->get();
+        $banners = HomeBanner::orderBy('order_no', 'asc')->where('lang', request('lang'))->get();
 
         return view('back.pages.home-banner.home_banners', compact('banners'));
     }

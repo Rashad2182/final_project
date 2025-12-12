@@ -148,7 +148,7 @@
                                         <i class="bi bi-translate me-2"></i>Dil
                                     </label>
                                     <select name="lang" id="lang" class="form-select" required>
-                                        <option value="" selected>Dil seçin...</option>
+                                        <option value="{{ app()->getLocale() }}" selected>{{ app()->getLocale() }}</option>
                                         <option value="ru" {{ old('lang') == 'ru' ? 'selected' : '' }}>Русский</option>
                                         <option value="az" {{ old('lang') == 'az' ? 'selected' : '' }}>Azərbaycan
                                         </option>
