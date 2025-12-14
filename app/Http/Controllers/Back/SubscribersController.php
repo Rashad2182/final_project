@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Back;
 
-use App\Models\Subscribers;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubscribersRequest;
 use App\Http\Requests\UpdateSubscribersRequest;
+use App\Models\Subscribers;
 
 class SubscribersController extends Controller
 {

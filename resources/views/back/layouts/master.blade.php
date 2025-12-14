@@ -26,6 +26,43 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont,
+            San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+
+            --bg-dark: #0b0b0b;
+            --text-light: #e5e5e5;
+            --accent-red: #dc3545;
+        }
+
+        body {
+            font-family: var(--tblr-font-sans-serif);
+            font-feature-settings: "cv03", "cv04", "cv11";
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Ümumi section-lar üçün */
+        section,
+        .page,
+        .page-wrapper {
+            background-color: var(--bg-dark);
+        }
+
+        /* Linklər */
+        a {
+            color: var(--accent-red);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #ff4d5a;
+        }
+    </style>
     @yield('css')
 </head>
 

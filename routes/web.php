@@ -1,13 +1,15 @@
 <?php
+
+use App\Http\Controllers\Back\BackAboutController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\HomeBannerController;
+use App\Http\Controllers\Back\SubscribersController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PagesController;
 use App\Http\Controllers\Front\ServiceController;
-use App\Http\Controllers\SubscribersController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 
@@ -46,6 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('home_banners',HomeBannerController::class);
     Route::get('/users', [UserController::class, 'index'])->name('back.users');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('back.users.destroy');
+    Route::get('/about' , [BackAboutController::class, 'index'])->name('back.about');
+    Route::get('/rh',[\App\Http\Controllers\Back\RHController::class, 'index'])->name('back.rh');
 });
 
 

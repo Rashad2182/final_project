@@ -198,25 +198,6 @@
                     </a>
                 </li>
 
-                {{--                About RH-projects--}}
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="">
-                <span
-                    class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                       class="me-2 icon icon-tabler icons-tabler-outline icon-tabler-brand-revolut">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M5 10h3v10h-3z"/>
-                            <path d="M14.5 4h-9.5v3h9.4a1.5 1.5 0 0 1 0 3h-3.4v4l4 6h4l-5 -7h.5a4.5 4.5 0 1 0 0 -9z"/>
-                        </svg>
-                </span>
-                        <span class="nav-link-title">
-                About RH-projects
-                </span>
-                    </a>
-                </li>
 
                 <!-- Home Banner -->
                 <li class="nav-item">
@@ -236,6 +217,49 @@
                 </span>
                         <span class="nav-link-title">
                   Home Banner
+                </span>
+                    </a>
+                </li>
+
+                {{--                About RH-projects--}}
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'back.rh' ? 'active' : '' }}"
+                       href="{{ route('back.rh') }}">
+                <span
+                    class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="me-2 icon icon-tabler icons-tabler-outline icon-tabler-brand-revolut">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 10h3v10h-3z"/>
+                            <path d="M14.5 4h-9.5v3h9.4a1.5 1.5 0 0 1 0 3h-3.4v4l4 6h4l-5 -7h.5a4.5 4.5 0 1 0 0 -9z"/>
+                        </svg>
+                </span>
+                        <span class="nav-link-title">
+                About RH-project
+                </span>
+                    </a>
+                </li>
+
+
+                <!-- Info -->
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'back.about' ? 'active' : '' }}"
+                       href="{{ route('back.about') }}">
+                <span
+                    class="nav-link-icon d-md-none d-lg-inline-block">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                      class="icon icon-tabler icons-tabler-filled icon-tabler-info-circle">
+                     <path stroke="none" d="M0 0h24v24H0z"
+                           fill="none"/>
+                     <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72
+                     9.996 -9.72zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.
+                     007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.
+                     117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"/>
+                 </svg>
+                </span>
+                        <span class="nav-link-title">
+                  About
                 </span>
                     </a>
                 </li>
