@@ -5,7 +5,7 @@ return[
     'info' => 'Subscribe info',
     'warning' => 'Subscribe warning',
     'danger' => 'Subscribe danger',
-    'delete successed' => 'Subscriber delete successed!',
+    'delete successed' => 'Delete successed!👍',
     'incorrect' => 'The email address is incorrect!',
     'empty' => 'Email address must not be empty!!'
 ];

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\HomeBannerController;
+use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
@@ -42,7 +43,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/subscribers', [SubscribersController::class, 'index'])->name('back.subscribers');
     Route::delete('/subscribers/{id}', [SubscribersController::class, 'destroy'])->name('back.subscriber.destroy');
-    Route::resource('home-banners',HomeBannerController::class);
+    Route::resource('home_banners',HomeBannerController::class);
+    Route::get('/users', [UserController::class, 'index'])->name('back.users');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('back.users.destroy');
 });
 
 

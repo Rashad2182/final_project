@@ -20,7 +20,7 @@ return[
     'newsletter' => 'Xəbər Bülleteni Üçün @E-POÇT',
     'subscribe' => 'Abunə Ol',
     'send message' => 'Mesajı Göndər',
-    'name' => 'Ad',
+    'name' => 'A.S.A',
     'email' => 'Email',
     'password' => 'Parol',
     'confirm' => 'Təsdiqlə',

@@ -6,7 +6,7 @@ return [
     'info' => 'Abunəlik haqqında məlumat',
     'warning' => 'Abunə xəbərdarlığı',
     'danger' => 'Abunə təhlükəsi',
-    'delete successed' => 'Abunəçi uğurla silindi!',
+    'delete successed' => 'Uğurla silindi!👍',
     'incorrect' => 'E-poçt ünvanı düzgün yazılmayıb!',
     'empty' => 'E-poçt ünvanı boş olmamalıdır!'
 ];

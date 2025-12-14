@@ -6,20 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHomeBannerRequest;
 use App\Http\Requests\UpdateHomeBannerRequest;
 use App\Models\HomeBanner;
-use App\traits\FileUploader;
-use Exception;
+use App\Models\User;
 
-class HomeBannerController extends Controller
+class UserController extends Controller
 {
-    use FileUploader;
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $banners = HomeBanner::orderBy('order_no', 'asc')->where('lang', request('lang'))->get();
+        $users = User::all()->sortByDesc('created_at');
 
-        return view('back.pages.home_banners.home_banners', compact('banners'));
+        return view('back.pages.users.users', compact('users'));
     }
 
     /**
@@ -27,7 +22,7 @@ class HomeBannerController extends Controller
      */
     public function create()
     {
-        return view('back.pages.home_banners.create');
+        return view('auth.register');
     }
 
     /**
@@ -36,18 +31,7 @@ class HomeBannerController extends Controller
      */
     public function store(StoreHomeBannerRequest $request)
     {
-        $image = $this->fileSave('files/home_banners/', $request->file('image'), 'image');
 
-        HomeBanner::create([
-            'lang' => $request->lang,
-            'image' => $image,
-            'alt' => $request->alt,
-            'title' => $request->title,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'order_no' => $request->order_no,
-        ]);
-        return redirect()->route('home_banners.index')->with('success' , __('create successed'));
     }
 
     /**
@@ -79,8 +63,8 @@ class HomeBannerController extends Controller
      */
     public function destroy($id)
     {
-$home_banner = HomeBanner::where('id', $id)->firstOrFail();
-$home_banner->delete();
-return redirect()->back()->with('success' , __('delete Successed'));
+        $home_banner = User::where('id', $id)->firstOrFail();
+        $home_banner->delete();
+        return redirect()->back()->with('success' , __('delete successed'));
     }
 }

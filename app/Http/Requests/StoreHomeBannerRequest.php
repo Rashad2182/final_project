@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
-use App\Models\HomeBanner;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -26,11 +24,11 @@ class StoreHomeBannerRequest extends FormRequest
     {
         return [
             'lang' => ['required' , Rule::in(array_keys(config('app.languages'))) ],
-            'image' => ['required' , 'image' , 'mimes:jpeg,png,jpg,gif,svg' , 'max:5120' ],
+            'image' => ['required' , 'string' , 'mimes:jpeg,png,jpg,gif,svg' , 'max:5120' ],
             'alt' => ['required' , 'string' , 'max:255' ],
             'title' => ['required' , 'string' , 'max:255' ],
-            'subtitle_address' => ['required' , 'string' , 'max:255' ],
-            'subtitle_phone' => ['required' , 'string' , 'max:255' ],
+            'address' => ['required' , 'string' , 'max:255' ],
+            'phone' => ['required' , 'string' , 'max:255' ],
             'order_no' => ['required' , 'integer' , 'min:0' , 'max:1000' ],
         ];
     }

@@ -5,14 +5,12 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <style>
         .banner-image {
             width: 80px;
             height: 50px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid black;
         }
 
         .action-buttons .btn {
@@ -20,31 +18,48 @@
         }
 
         .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: none;
-            border-radius: 12px;
+            border: 10px solid black !important;
+            border-radius: 0;
         }
 
         .table thead th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: black;
             color: white;
             font-weight: 600;
-            border: none;
+            border: 2px solid black;
+        }
+
+        .table {
+            border: 2px solid black;
+        }
+
+        .table td {
+            border: 1px solid black;
         }
     </style>
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" style="background-color: #000000">
         <div class="col-12">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-header bg-transparent border-0 d-flex justify-content-between align-items-center py-3">
-                    <h4 class="mb-0 fw-bold">
-                        <i class="bi bi-image me-2"></i>Ana Səhifə Banner İdarəetməsi
+            <div class="card" style="background-color: grey">
+                <div class="card-header bg-transparent d-flex justify-content-between align-items-center py-3">
+                <h4 class="mb-0 fw-bold">
+                        <i class="bi bi-image me-2"></i> Home Banners List
                     </h4>
-                    <a href="{{ route('home-banners.create') }}" class="btn btn-primary rounded-pill px-4">
-                        <i class="bi bi-plus-circle me-1"></i> Yeni Banner
-                    </a>
+                    <div class="d-flex align-items-center gap-3">
+                        <select id="languageFilter" class="form-select" style="width: auto;">
+                            <option value="">Bütün Dillər</option>
+                            @foreach(config('app.languages') as $code => $name)
+                                <option value="{{ $code }}" {{ request('lang') == $code ? 'selected' : '' }}>
+                                    {{ $name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <a href="{{ route('home_banners.create') }}" class="btn btn-dark rounded-pill px-4">
+                        <i class="bi bi-plus-circle me-1"></i> + Yeni Banner
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -68,7 +83,7 @@
                                     <td><span class="badge bg-info">{{ strtoupper($banner->lang) }}</span></td>
                                     <td>
                                         @if($banner->image)
-                                            <img src="{{ asset($banner->image) }}" alt="{{ $banner->title ?? '' }}"
+                                            <img src="{{ $banner->image }}" alt="{{ $banner->alt ?? '' }}"
                                                  class="banner-image">
                                         @else
                                             <span class="text-muted">Şəkil yoxdur</span>
@@ -118,8 +133,6 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#bannersTable').DataTable({
@@ -129,6 +142,19 @@
                 order: [[6, 'asc']],
                 pageLength: 10,
                 responsive: true
+            });
+
+            $('#languageFilter').on('change', function () {
+                const selectedLang = $(this).val();
+                const url = new URL(window.location.href);
+
+                if (selectedLang) {
+                    url.searchParams.set('lang', selectedLang);
+                } else {
+                    url.searchParams.delete('lang');
+                }
+
+                window.location.href = url.toString();
             });
         });
     </script>

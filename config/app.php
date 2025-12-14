@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'it-project'),
+    'name' => env('APP_NAME', 'it-project.test'),
 
 
     'languages' => [

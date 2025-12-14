@@ -101,33 +101,33 @@
                 <span onchange="changeLang({{ app()->getLocale() }})">
                     @if (app()->getLocale()==='en')
 
-                        <span class="fi fi-gb-eng"></span> EN
+                        <span class="fi fi-gb-eng"></span> English
                         <div class="lang-menu" id="langMenu">
                         <div class="lang-item" onclick="changeLang('az')">
-                            <span class="fi fi-az"></span> AZ
+                            <span class="fi fi-az"></span> Azərbaycan
                         </div>
                         <div class="lang-item" onclick="changeLang('ru')">
-                            <span class="fi fi-ru"></span> RU
+                            <span class="fi fi-ru"></span> Русский
                         </div>
                         @elseif (app()->getLocale()==='az')
 
-                                <span class="fi fi-az"></span> AZ
+                                <span class="fi fi-az"></span> Azərbaycan
                                 <div class="lang-menu" id="langMenu">
                                 <div class="lang-item" onclick="changeLang('en')">
-                                    <span class="fi fi-gb-eng"></span> EN
+                                    <span class="fi fi-gb-eng"></span> English
                                 </div>
                                 <div class="lang-item" onclick="changeLang('ru')">
-                                    <span class="fi fi-ru"></span> RU
+                                    <span class="fi fi-ru"></span> Русский
                                 </div>
                                 @elseif (app()->getLocale()==='ru')
 
-                                        <span class="fi fi-ru"></span> RU
+                                        <span class="fi fi-ru"></span> Русский
                                         <div class="lang-menu" id="langMenu">
                                         <div class="lang-item" onclick="changeLang('en')">
-                                            <span class="fi fi-gb-eng"></span> EN
+                                            <span class="fi fi-gb-eng"></span> English
                                         </div>
                                         <div class="lang-item" onclick="changeLang('az')">
-                                            <span class="fi fi-az"></span> AZ
+                                            <span class="fi fi-az"></span> Azərbaycan
                                         </div>
                                         @endif
                                     </div>

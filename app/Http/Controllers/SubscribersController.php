@@ -85,6 +85,6 @@ class SubscribersController extends Controller
 
         $subscriber->delete();
 
-        return redirect()->back()->with('success', __('toaster.delete successed👍'));
+        return redirect()->back()->with('success', __('toaster.delete successed'));
     }
 }

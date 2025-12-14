@@ -20,7 +20,7 @@ return [
     'newsletter' => 'Newsletter @Email Address',
     'subscribe' => 'Subscribe',
     'send message' => 'Send Message',
-    'name' => 'Name',
+    'name' => 'Fullname',
     'email' => 'Email',
     'password' => 'Password',
     'confirm' => 'Confirm',

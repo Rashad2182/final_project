@@ -1,58 +1,77 @@
 @extends('back.layouts.master')
 
 @section('title')
-    Home Banner Əlavə Et
+    Create Home Banner
 @endsection
 
 @section('css')
     <style>
+        body {
+            background-color: #1a1a1a;
+        }
+
+        .page-wrapper {
+            background-color: #1a1a1a;
+        }
+
+        .container-fluid {
+            background-color: #1a1a1a;
+        }
+
         .form-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: #2d2d2d;
+            border: 3px solid #dc3545;
+            border-radius: 5px;
         }
 
         .form-inner {
-            background: white;
-            border-radius: 15px;
+            background: #2d2d2d;
+            border-radius: 5px;
             padding: 30px;
         }
 
         .form-label {
             font-weight: 600;
-            color: #495057;
+            color: #e0e0e0;
             margin-bottom: 8px;
         }
 
         .form-control, .form-select {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            border: 2px solid #dc3545;
             padding: 12px 15px;
-            transition: all 0.3s ease;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
         }
 
         .form-control:focus, .form-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: #dc3545;
+            box-shadow: none;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .form-select option {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
         }
 
         .image-preview-container {
             width: 100%;
             height: 300px;
-            border: 3px dashed #dee2e6;
-            border-radius: 15px;
+            border: 3px solid #dc3545;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: #f8f9fa;
-            transition: all 0.3s ease;
+            background: #1a1a1a;
             cursor: pointer;
         }
 
         .image-preview-container:hover {
-            border-color: #667eea;
-            background: #f0f2ff;
+            border-color: #c82333;
+            background: #1a1a1a;
         }
 
         .image-preview-container img {
@@ -63,28 +82,30 @@
 
         .upload-placeholder {
             text-align: center;
-            color: #6c757d;
+            color: #a0a0a0;
         }
 
         .upload-placeholder i {
             font-size: 4rem;
-            color: #dee2e6;
+            color: #dc3545;
             margin-bottom: 15px;
         }
 
+        .upload-placeholder .text-muted {
+            color: #808080 !important;
+        }
+
         .btn-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            color: white;
+            background: #2d2d2d;
+            border: 2px solid #dc3545;
+            color: #dc3545;
             padding: 12px 30px;
-            border-radius: 10px;
+            border-radius: 5px;
             font-weight: 600;
-            transition: all 0.3s ease;
         }
 
         .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            background: #dc3545;
             color: white;
         }
 
@@ -97,7 +118,7 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #6c757d;
+            color: #a0a0a0;
         }
 
         .input-icon .form-control {
@@ -105,8 +126,8 @@
         }
 
         .section-title {
-            color: white;
-            font-weight: 700;
+            color: #dc3545;
+            font-weight: 400;
             font-size: 1.8rem;
             margin-bottom: 0;
         }
@@ -114,17 +135,21 @@
         .section-icon {
             width: 50px;
             height: 50px;
-            background: white;
+            background: #2d2d2d;
+            border: 3px solid #dc3545;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            color: #667eea;
+            color: #dc3545;
+        }
+
+        .text-danger {
+            color: #ff6b6b !important;
         }
     </style>
 @endsection
-
 @section('content')
     <div class="container-fluid py-4">
         <div class="row justify-content-center">
@@ -138,7 +163,7 @@
                     </div>
 
                     <div class="form-inner">
-                        <form action="{{ route('home-banner.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('home_banners.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -147,11 +172,10 @@
                                     <label for="lang" class="form-label">
                                         <i class="bi bi-translate me-2"></i>Dil
                                     </label>
-                                    <select name="lang" id="lang" class="form-select" required>
-                                        <option value="{{ app()->getLocale() }}" selected>{{ app()->getLocale() }}</option>
+                                    <select name="lang" id="lang" class="form-select">
+                                        <option value="" selected> Dil Seçin </option>
                                         <option value="ru" {{ old('lang') == 'ru' ? 'selected' : '' }}>Русский</option>
-                                        <option value="az" {{ old('lang') == 'az' ? 'selected' : '' }}>Azərbaycan
-                                        </option>
+                                        <option value="az" {{ old('lang') == 'az' ? 'selected' : '' }}>Azərbaycan</option>
                                         <option value="en" {{ old('lang') == 'en' ? 'selected' : '' }}>English</option>
                                     </select>
                                     @error('lang')
@@ -193,7 +217,7 @@
                                         <div class="upload-placeholder">
                                             <i class="bi bi-cloud-upload"></i>
                                             <p class="mb-0">Şəkil yükləmək üçün klikləyin</p>
-                                            <small class="text-muted">Maksimum fayl ölçüsü: 2MB</small>
+                                            <small class="text-muted">Maksimum fayl ölçüsü: 5MB</small>
                                         </div>
                                     </div>
                                     <input type="file" name="image" id="image" class="form-control" accept="image/*"
@@ -250,9 +274,6 @@
 
                             <!-- Action Buttons -->
                             <div class="d-flex justify-content-end gap-3 mt-4">
-                                <a href="{{ route('home-banner.index') }}" class="btn btn-secondary px-4">
-                                    <i class="bi bi-x-circle me-2"></i>Ləğv et
-                                </a>
                                 <button type="submit" class="btn btn-gradient px-4">
                                     <i class="bi bi-check-circle me-2"></i>Yadda saxla
                                 </button>
@@ -294,6 +315,20 @@
                         <small class="text-muted">Maksimum fayl ölçüsü: 2MB</small>
                     </div>
                 `;
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('src').addEventListener('change', function (event) {
+            const preview = document.getElementById('imagePreviewController');
+            const file = event.target.files[0];
+
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove('d-none');
+            } else {
+                preview.src = '';
+                preview.classList.add('d-none');
             }
         });
     </script>

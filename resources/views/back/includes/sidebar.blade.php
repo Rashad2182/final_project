@@ -1,5 +1,88 @@
 @php use Illuminate\Support\Facades\Route; @endphp
 
+<style>
+    :root {
+        --sidebar-bg: #1a1a1a;
+        --sidebar-hover: #2a2a2a;
+        --accent-red: #dc3545;
+        --accent-red-hover: #c82333;
+        --text-light: #e0e0e0;
+    }
+
+    .navbar-vertical {
+        background: linear-gradient(180deg, var(--sidebar-bg) 0%, #0d0d0d 100%) !important;
+        border-right: 2px solid var(--accent-red);
+    }
+
+    .navbar-vertical .navbar-brand {
+        color: var(--text-light) !important;
+        border-bottom: 2px solid var(--accent-red);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-vertical .navbar-brand:hover {
+        color: var(--accent-red) !important;
+    }
+
+    .navbar-vertical .navbar-brand svg {
+        color: var(--accent-red);
+    }
+
+    .navbar-vertical .nav-link {
+        color: var(--text-light) !important;
+        border-radius: 8px;
+        margin: 4px 8px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-vertical .nav-link:hover {
+        background: var(--sidebar-hover) !important;
+        border-left: 3px solid var(--accent-red);
+        padding-left: 12px;
+        transform: translateX(4px);
+    }
+
+    .navbar-vertical .nav-link.active {
+        background: var(--accent-red) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+    }
+
+    .navbar-vertical .nav-link-icon {
+        color: var(--accent-red) !important;
+    }
+
+    .navbar-vertical .nav-link:hover .nav-link-icon {
+        color: #ffffff !important;
+    }
+
+    .navbar-vertical .nav-link.active .nav-link-icon {
+        color: #ffffff !important;
+    }
+
+    .navbar-toggler {
+        border-color: var(--accent-red) !important;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23dc3545' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    .navbar-vertical .dropdown-menu {
+        background: var(--sidebar-bg);
+        border: 1px solid var(--accent-red);
+    }
+
+    .navbar-vertical .dropdown-item {
+        color: var(--text-light);
+    }
+
+    .navbar-vertical .dropdown-item:hover {
+        background: var(--accent-red);
+        color: #ffffff;
+    }
+</style>
 
 <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
@@ -8,8 +91,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <a href="{{ route('dashboard') }}">
-                <i class="fa-solid fa-computer me-3"></i>it-project
+            <a href="{{ route('dashboard') }} " style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline
+                     icon-tabler-device-desktop-code">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12.5 16h-8.5a1 1 0 0 1 -1 -1v-10a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8"/>
+                    <path d="M7 20h4"/>
+                    <path d="M9 16v4"/>
+                    <path d="M20 21l2 -2l-2 -2"/>
+                    <path d="M17 17l-2 2l2 2"/>
+                </svg>
+                it-project
             </a>
 
             <!-- Dashboard -->
@@ -19,7 +113,8 @@
 
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
+                       href="{{ route('dashboard') }}">
                 <span
                     class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -42,7 +137,8 @@
 
                 <!-- Email subscribers -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('back.subscribers') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'back.subscribers' ? 'active' : '' }}"
+                       href="{{ route('back.subscribers') }}">
                 <span
                     class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -57,6 +153,26 @@
                 </span>
                         <span class="nav-link-title">
                   Email subscribers
+                </span>
+                    </a>
+                </li>
+
+                <!-- Logins Users -->
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'back.users' ? 'active' : '' }}"
+                       href="{{ route('back.users') }}">
+                <span
+                    class="nav-link-icon d-md-none d-lg-inline-block">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
+                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/>
+                     <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"/><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/>
+                     <path d="M17 10h2a2 2 0 0 1 2 2v1"/><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/>
+                     <path d="M3 13v-1a2 2 0 0 1 2 -2h2"/></svg>
+                </span>
+                        <span class="nav-link-title">
+                  Logins Users
                 </span>
                     </a>
                 </li>
@@ -82,25 +198,30 @@
                     </a>
                 </li>
 
-                <!-- Statistics -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link d-flex align-items-center" id="dropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- SVG icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="me-2 icon icon-tabler icons-tabler-outline icon-tabler-brand-revolut">
+                {{--                About RH-projects--}}
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="">
+                <span
+                    class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="me-2 icon icon-tabler icons-tabler-outline icon-tabler-brand-revolut">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M5 10h3v10h-3z"/>
                             <path d="M14.5 4h-9.5v3h9.4a1.5 1.5 0 0 1 0 3h-3.4v4l4 6h4l-5 -7h.5a4.5 4.5 0 1 0 0 -9z"/>
                         </svg>
-                        Statistics
+                </span>
+                        <span class="nav-link-title">
+                About RH-projects
+                </span>
                     </a>
                 </li>
 
                 <!-- Home Banner -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home-banners.index') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'home_banners.index' ? 'active' : '' }}"
+                       href="{{ route('home_banners.index') }}">
                 <span
                     class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
