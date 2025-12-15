@@ -17,9 +17,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role()->id === 1) {
+        if (auth()->check() && auth()->user()->role()->id === 'admin') {
            return redirect()->route('dashboard');
-        } elseif (auth()->check() && auth()->user()->role()->id === 2) {
+        } elseif (auth()->check() && auth()->user()->role()->id === user) {
             return redirect()->route('front.home');
         } else {
             return $next($request);

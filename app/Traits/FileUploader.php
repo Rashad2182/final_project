@@ -1,15 +1,57 @@
 <?php
 
 namespace App\Traits;
-
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Exception;
 
 trait FileUploader
 {
     /**
-     * Tək fayl yükləmək
-     * $src = $this->fileSave('uploads/', $_FILES, 'inputName');
+     * @throws Exception
      */
+    public function fileSaveLaravel(string $path, UploadedFile $file, string $prefix = 'file'): string
+    {
+        // 1️⃣ Fayl doğrudanmı yüklənib?
+        if (!$file->isValid()) {
+            throw new \Exception('Fayl yüklənərkən xəta baş verdi');
+        }
+
+        // 2️⃣ İcazə verilən MIME tiplər (real təhlükəsizlik)
+        $allowedMimeTypes = [
+            'image/jpeg',
+            'image/png',
+            'image/webp',
+        ];
+
+        if (!in_array($file->getMimeType(), $allowedMimeTypes)) {
+            throw new \Exception('Yalnız JPG, PNG və WEBP formatlarına icazə verilir');
+        }
+
+        // 3️⃣ Maksimum ölçü (2MB)
+        $maxSize = 2 * 1024 * 1024; // 2MB
+        if ($file->getSize() > $maxSize) {
+            throw new \Exception('Fayl ölçüsü maksimum 2MB olmalıdır');
+        }
+
+        // 4️⃣ Qovluq yoxdursa yarat
+        $fullPath = public_path($path);
+        if (!is_dir($fullPath)) {
+            mkdir($fullPath, 0755, true);
+        }
+
+        // 5️⃣ Təhlükəsiz unikal ad
+        $extension = $file->getClientOriginalExtension();
+        $fileName = $prefix . '_' . Str::uuid() . '.' . $extension;
+
+        // 6️⃣ Faylı köçür
+        $file->move($fullPath, $fileName);
+
+        // 7️⃣ DB üçün path qaytar
+        return $path . $fileName;
+    }
+
+
     public function fileSave($path, $files, $inputName)
     {
         $name = null;

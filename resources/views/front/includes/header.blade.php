@@ -174,7 +174,7 @@
             </div>
         @else
             <!-- 🌍 End Language Dropdown -->
-            <a href="{{ route('register') }}"
+            <a href="{{ route('login') }}"
                class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">@lang('messages.sign up')<i
                     class="fa fa-arrow-right ms-3"></i></a>
         @endif

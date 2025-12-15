@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('home_banners', function (Blueprint $table) {
             $table->id();
             $table->string('lang',2);
-            $table->string('image')->nullable();
-            $table->string('title')->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->integer('order_no')->default(0);
+            $table->string('image');
+            $table->string('alt');
+            $table->string('title');
+            $table->string('address');
+            $table->string('phone');
             $table->timestamps();
         });
     }

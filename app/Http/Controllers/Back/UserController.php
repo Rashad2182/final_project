@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        //
     }
 
     /**
@@ -63,8 +63,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $home_banner = User::where('id', $id)->firstOrFail();
-        $home_banner->delete();
+        $user = User::where('id', $id)->firstOrFail();
+
+        // Əgər silinən user hazırda login olan userdirsə
+        if (Auth::id() === $user->id) {
+            Auth::logout();
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
+        }
+
+        $user->delete();
+
         return redirect()->back()->with('success' , __('delete successed'));
     }
 }

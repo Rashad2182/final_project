@@ -1,3 +1,4 @@
+@php use App\Models\HomeBanner; @endphp
 @extends('back.layouts.master')
 
 @section('title')
@@ -36,6 +37,13 @@
         .table td {
             border: 1px solid black;
         }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
     </style>
 @endsection
 
@@ -44,20 +52,22 @@
         <div class="col-12">
             <div class="card" style="background-color: grey">
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center py-3">
-                <h4 class="mb-0 fw-bold">
+                    <h4 class="mb-0 fw-bold">
                         <i class="bi bi-image me-2"></i> Home Banners List
                     </h4>
                     <div class="d-flex align-items-center gap-3">
-                        <select id="languageFilter" class="form-select" style="width: auto;">
-                            <option value="">Bütün Dillər</option>
+                        <select id="languageFilter" class="form-select" style="width: auto;"
+                                name="lang"
+                                onchange="window.location.href='{{ route('home_banners.index') }}?lang='+this.value">
                             @foreach(config('app.languages') as $code => $name)
-                                <option value="{{ $code }}" {{ request('lang') == $code ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $code }}" {{ request('lang') == $code ? 'selected' : '' }}>
                                     {{ $name }}
                                 </option>
                             @endforeach
                         </select>
                         <a href="{{ route('home_banners.create') }}" class="btn btn-dark rounded-pill px-4">
-                        <i class="bi bi-plus-circle me-1"></i> + Yeni Banner
+                            <i class="bi bi-plus-circle me-1"></i> + Yeni Banner
                         </a>
                     </div>
                 </div>
@@ -77,6 +87,7 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @forelse($banners ?? [] as $banner)
                                 <tr>
                                     <td><span class="badge bg-light text-dark">{{ $banner->id }}</span></td>
@@ -95,21 +106,19 @@
                                     <td><span class="badge bg-secondary">{{ $banner->order_no }}</span></td>
                                     <td class="text-center">
                                         <div class="action-buttons">
-                                            <a href="{{ route('home-banners.edit', $banner->id) }}"
-                                               class="btn btn-sm btn-warning rounded-circle"
-                                               title="Redaktə et">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <form action="{{ route('home-banners.destroy', $banner->id) }}"
-                                                  method="POST"
-                                                  class="d-inline"
-                                                  onsubmit="return confirm('Silmək istədiyinizdən əminsiniz?')">
+                                            <button class="btn btn-ghost-primary" style="background-color: #0dcaf0">
+                                                <a href="{{ route('home_banners.edit', $banner->id) }}"
+                                                   style="color: #F0F0F0">
+                                                    Update
+                                                </a>
+                                            </button>
+                                            <form class="delete-form"
+                                                  action="{{ route('home_banners.destroy', $banner->id) }}"
+                                                  method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit"
-                                                        class="btn btn-sm btn-danger rounded-circle"
-                                                        title="Sil">
-                                                    <i class="bi bi-trash"></i>
+                                                <button class="btn btn-danger" type="submit">
+                                                    Delete
                                                 </button>
                                             </form>
                                         </div>
@@ -139,14 +148,14 @@
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/az.json'
                 },
-                order: [[6, 'asc']],
+                order: [[10, 'asc']],
                 pageLength: 10,
                 responsive: true
             });
 
             $('#languageFilter').on('change', function () {
                 const selectedLang = $(this).val();
-                const url = new URL(window.location.href);
+                const url = new URL(window.location.href = "{{ route('home_banners.index') }}?lang=" + selectedLang);
 
                 if (selectedLang) {
                     url.searchParams.set('lang', selectedLang);
@@ -155,6 +164,27 @@
                 }
 
                 window.location.href = url.toString();
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Silmək istədiyinizdən əminsiniz?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Bəli',
+                    cancelButtonText: 'Xeyr'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
             });
         });
     </script>

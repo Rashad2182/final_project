@@ -173,10 +173,12 @@
                                         <i class="bi bi-translate me-2"></i>Dil
                                     </label>
                                     <select name="lang" id="lang" class="form-select">
-                                        <option value="" selected> Dil Seçin </option>
-                                        <option value="ru" {{ old('lang') == 'ru' ? 'selected' : '' }}>Русский</option>
-                                        <option value="az" {{ old('lang') == 'az' ? 'selected' : '' }}>Azərbaycan</option>
-                                        <option value="en" {{ old('lang') == 'en' ? 'selected' : '' }}>English</option>
+                                        @foreach(config('app.languages') as $code => $name)
+                                        <option value="{{ $code }}"
+                                             @selected(old('lang', ) == 'az')>
+                                            {{ $name }}
+                                        </option>
+                                        @endforeach
                                     </select>
                                     @error('lang')
                                     <div class="text-danger mt-1">{{ $message }}</div>
