@@ -105,7 +105,7 @@
                                     <path
                                         d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"/>
                                 </svg>
-                                {{ $user->name }}</td>
+                                {{ $user->fullname }}</td>
                             <td class="table-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="15" viewBox="0 0 24 24"
                                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"

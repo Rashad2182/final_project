@@ -4,15 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     /*
@@ -45,34 +40,25 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param Request $request
-     * @return RedirectResponse
-     */
+
     public function register(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'fullname' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'role' => 'required',
+            'role_id' => 'required',
         ]);
-$this->create()->insert($data);
+        return User::create([
+            'role_id' => User::count() === 0 ? 'admin' : 'user',
+            'fullname' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
         // 🔑 AUTO LOGIN
         Auth::login($user);
 
         return redirect()->route('front.home');
 
     }
-
-    public function create()
-    {
-        return User::create([
-            'role_id' => User::count() === 0 ? 'admin' : 'user',
-            'fullname' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);}
 }
