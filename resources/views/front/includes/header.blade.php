@@ -140,13 +140,17 @@
             <div class="dropdown">
                 <a class="btn rounded-0 py-2 px-lg-4 d-none d-lg-block dropdown-toggle user-btn"
                    href="#" role="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user me-3"></i> {{ auth()->user()->name }}
+                    <i class="fa-solid fa-user me-3"></i> {{ auth()->user()->fullname }}
                 </a>
 
                 <ul style="background-color: black" class="dropdown-menu dropdown-menu-end shadow"
                     aria-labelledby="userMenu">
                     <li>
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">
+                        <a class="dropdown-item" @if(auth()->user()->role()===1)
+                            href="{{ route('dashboard') }}"
+                        @else
+                            href="{{ route('back.user.panel') }}"
+                            @endif>
                             <i class="fa fa-user me-2 text-success"></i> Profile
                         </a>
                     </li>

@@ -11,7 +11,7 @@
                    aria-label="Open user menu">
                     <span class="avatar avatar-sm" style="background-image: url({{ asset('it-project/img/photo_2025-08-09_03-01-50.jpg') }})"></span>
                     <div class="d-none d-xl-block ps-2">
-                        <div style="color: #b1d0e6">{{ auth()->user()->name }}</div>
+                        <div style="color: #b1d0e6">{{ auth()->user()->fullname }}</div>
                         <div class="mt-1 small text-secondary">Web developer</div>
                     </div>
                 </a>

@@ -128,12 +128,12 @@
         @csrf
         <!-- Name -->
         <div class="mb-3">
-            <label for="fullname">@lang('messages.name')</label>
+            <label for="fullname">@lang('messages.fullname')</label>
             <input style="background-color: black" id="fullname" type="text"
                    class="form-control @error('fullname') is-invalid @enderror"
                    name="fullname" value="{{ old('fullname') }}" required>
 
-            @error('name')
+            @error('fullname')
             <span class="invalid-feedback" role="alert" style="display:block;color:red">
                 <strong>{{ $message }}</strong>
             </span>

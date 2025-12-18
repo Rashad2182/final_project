@@ -19,7 +19,7 @@ class Admin
     {
         if (auth()->check() && auth()->user()->role()->id === 'admin') {
            return redirect()->route('dashboard');
-        } elseif (auth()->check() && auth()->user()->role()->id === user) {
+        } elseif (auth()->check() && auth()->user()->role()->id === 'user') {
             return redirect()->route('front.home');
         } else {
             return $next($request);

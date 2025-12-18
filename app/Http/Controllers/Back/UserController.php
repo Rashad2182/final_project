@@ -66,7 +66,7 @@ class UserController extends Controller
         $user = User::where('id', $id)->firstOrFail();
 
         // Əgər silinən user hazırda login olan userdirsə
-        if (Auth::id() === $user->id) {
+        if (auth()->login($user)) {
             Auth::logout();
             request()->session()->invalidate();
             request()->session()->regenerateToken();

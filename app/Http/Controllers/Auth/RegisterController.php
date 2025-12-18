@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Front\HomeController;
 use App\Models\User;
-
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
@@ -24,13 +25,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected string $redirectTo = '/';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -44,21 +38,23 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'fullname' => 'required|string|max:255',
+            'fullname' => 'required|string|max:255',  // ✅ совпадает с формой
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'role_id' => 'required',
         ]);
-        return User::create([
-            'role_id' => User::count() === 0 ? 'admin' : 'user',
-            'fullname' => $request->name,
+
+        $role_id = User::count() === 0 ? 1 : 2;
+
+        $user = User::create([
+            'role_id' => $role_id,  // ✅ ID вместо строки
+            'fullname' => $request->fullname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        // 🔑 AUTO LOGIN
-        Auth::login($user);
 
-        return redirect()->route('front.home');
+        auth()->login($user);  // ✅ Auth импортирован, $user определён
 
+        return redirect('/');
     }
+
 }

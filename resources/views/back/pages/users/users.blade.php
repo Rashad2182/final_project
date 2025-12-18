@@ -87,6 +87,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Role</th>
                         <th>Fullname</th>
                         <th>Email</th>
                         <th>Operations</th>
@@ -98,6 +99,23 @@
                             <td class="table-dark">{{ $loop->iteration }} </td>
                             <td class="table-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     class="icon icon-tabler icons-tabler-outline icon-tabler-user-check">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4"/>
+                                    <path d="M15 19l2 2l4 -4"/>
+                                </svg>
+                                @if($user->role_id === 1)
+                                    admin
+                                @else
+                                    user
+                                @endif
+                            </td>
+
+                            <td class="table-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="currentColor"
                                      class="icon icon-tabler icons-tabler-filled icon-tabler-user">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -105,7 +123,9 @@
                                     <path
                                         d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"/>
                                 </svg>
-                                {{ $user->fullname }}</td>
+                                {{ $user->fullname }}
+                            </td>
+
                             <td class="table-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="15" viewBox="0 0 24 24"
                                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -116,7 +136,9 @@
                                     <path d="M3 19l6 -6"/>
                                     <path d="M15 13l6 6"/>
                                 </svg>
-                                {{ $user->email }}</td>
+                                {{ $user->email }}
+                            </td>
+
                             <td class="table-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none"
