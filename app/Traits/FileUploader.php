@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Http\UploadedFile;
+
 trait FileUploader
 {
     /**
@@ -35,11 +37,35 @@ trait FileUploader
         }
         return $fileNewName;
     }
+    public function fileSaves($path, UploadedFile $file)
+    {
+        $fileNewName = null;
+
+        if ($file && $file->isValid()) {
+
+            $ext = $file->getClientOriginalExtension();
+
+            if (!in_array($ext, ['png', 'jpg'])) {
+                die('Yalniz png, jpg upload olunmalidir');
+            }
+
+            if (!is_dir($path)) {
+                mkdir($path, 0777, true);
+            }
+
+            $fileNewName = uniqid() . '.' . $ext;
+
+            $file->move($path, $fileNewName); // move_uploaded_file yox, Laravel method
+        }
+
+        return $fileNewName;
+    }
 
     /**
      * Çoxlu fayl yükləmək
      * $names = $this->multiFileSave('uploads/', $_FILES, 'inputName');
      */
+
     public function multiFileSave($path, $files, $inputName): array
     {
         $names = [];

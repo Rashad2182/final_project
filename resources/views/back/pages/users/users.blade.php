@@ -73,10 +73,10 @@
                 <form action="">
                     <div class="input-group search-box" style="width:300px;">
                 <span class="input-group-text bg-white border-0">
-                    <i class="bi bi-search"></i>
+                     <i class="fa fa-search"></i>
                 </span>
                         <input id="searchInput" type="text" class="form-control border-0"
-                               placeholder="Axtar... (ID / Email)">
+                               placeholder="Axtar...">
                     </div>
                 </form>
 
@@ -179,10 +179,10 @@
             const q = input.value.toLowerCase();
 
             rows.forEach(row => {
-                const id = row.children[0].innerText.toLowerCase();
-                const email = row.children[1].innerText.toLowerCase();
+                // bütün sətrin text-i
+                const rowText = row.innerText.toLowerCase();
 
-                if (id.includes(q) || email.includes(q)) {
+                if (rowText.includes(q)) {
                     row.style.display = "";
                 } else {
                     row.style.display = "none";
@@ -190,6 +190,7 @@
             });
         });
     </script>
+
     <script>
         document.querySelectorAll('.delete-form').forEach(form => {
             form.addEventListener('submit', function (e) {

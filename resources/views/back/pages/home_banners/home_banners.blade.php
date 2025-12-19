@@ -78,23 +78,24 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Dil</th>
+                                <th>Sıra</th>
                                 <th>Şəkil</th>
                                 <th>Başlıq</th>
                                 <th>Ünvan</th>
                                 <th>Telefon</th>
-                                <th>Sıra</th>
                                 <th class="text-center">Əməliyyatlar</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @forelse($banners ?? [] as $banner)
+                            @forelse($banners as $banner)
                                 <tr>
                                     <td><span class="badge bg-light text-dark">{{ $banner->id }}</span></td>
                                     <td><span class="badge bg-info">{{ strtoupper($banner->lang) }}</span></td>
+                                    <td><span class="badge bg-secondary">{{ $banner->order_no }}</span></td>
                                     <td>
                                         @if($banner->image)
-                                            <img src="{{ $banner->image }}" alt="{{ $banner->alt ?? '' }}"
+                                            <img src="{{ 'files/home_banners/'.$banner->image }}" alt="{{ $banner->alt ?? '' }}"
                                                  class="banner-image">
                                         @else
                                             <span class="text-muted">Şəkil yoxdur</span>
@@ -103,12 +104,11 @@
                                     <td>{{ $banner->title ?? '-' }}</td>
                                     <td>{{ $banner->address ?? '-' }}</td>
                                     <td>{{ $banner->phone ?? '-' }}</td>
-                                    <td><span class="badge bg-secondary">{{ $banner->order_no }}</span></td>
                                     <td class="text-center">
                                         <div class="action-buttons">
                                             <button class="btn btn-ghost-primary" style="background-color: #0dcaf0">
                                                 <a href="{{ route('home_banners.edit', $banner->id) }}"
-                                                   style="color: #F0F0F0">
+                                                   style="color: #F0F0F0; text-decoration: none">
                                                     Update
                                                 </a>
                                             </button>

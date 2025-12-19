@@ -74,10 +74,10 @@
                 <form action="">
                     <div class="input-group search-box" style="width:300px;">
                 <span class="input-group-text bg-white border-0">
-                    <i class="bi bi-search"></i>
+                     <i class="fa fa-search"></i>
                 </span>
                         <input id="searchInput" type="text" class="form-control border-0"
-                               placeholder="Axtar... (ID / Email)">
+                               placeholder="Axtar...">
                     </div>
                 </form>
 

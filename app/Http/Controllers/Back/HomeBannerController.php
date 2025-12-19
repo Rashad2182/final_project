@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateHomeBannerRequest;
 use App\Models\HomeBanner;
 use App\traits\FileUploader;
 use Exception;
-use UniSharp\LaravelFilemanager\Events\ImageIsUploading;
 
 class HomeBannerController extends Controller
 {
@@ -17,7 +16,7 @@ class HomeBannerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ImageIsUploading $request)
+    public function index()
     {
         $banners = HomeBanner::orderBy('order_no', 'asc')->where('lang', request('lang'))->get();
 
@@ -39,11 +38,11 @@ class HomeBannerController extends Controller
     public function store(StoreHomeBannerRequest $request){
 
         $request->validate([
-            'file' => 'required|file|mimes:jpg,jpeg,png,pdf,docx,txt|max:5120', // max 5MB
+            'image' => 'required|file|max:5120', // max 5MB
         ]);
 
 
-        $image = $this->fileSaves( 'public/files/home_banner', $request,'image');
+        $image = $this->fileSaves( 'files/home_banners', $request->image);
 
 
         HomeBanner::create([

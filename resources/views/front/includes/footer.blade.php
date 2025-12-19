@@ -87,14 +87,14 @@
 
                     success: function (response) {
                         $('#subscribeEmail').val('');
-                        toastr.success(response.success);
+                        toastr.success("Abunə oldunuz😊");
                     },
                     error: function (xhr) {
                         if (xhr.status === 422 && xhr.responseJSON.errors) {
                             let firstError = Object.values(xhr.responseJSON.errors)[0][0];
                             toastr.error(firstError);
                         } else {
-                            toastr.error("@lang('toaster.error')");
+                            toastr.error("E-poçt ünvanı boş olmamalıdır və ya düzgün yazılmalıdır!❌");
                         }
                     },
                 });

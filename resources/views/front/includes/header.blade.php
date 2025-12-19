@@ -146,11 +146,7 @@
                 <ul style="background-color: black" class="dropdown-menu dropdown-menu-end shadow"
                     aria-labelledby="userMenu">
                     <li>
-                        <a class="dropdown-item" @if(auth()->user()->role()===1)
-                            href="{{ route('dashboard') }}"
-                        @else
-                            href="{{ route('back.user.panel') }}"
-                            @endif>
+                        <a class="dropdown-item" href="{{ auth()->user()->isAdmin() ? route('dashboard') : route('front.home') }}" >
                             <i class="fa fa-user me-2 text-success"></i> Profile
                         </a>
                     </li>
@@ -171,7 +167,7 @@
                         </form>
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fa fa-sign-out-alt me-2"></i> Logout
+                            <i class="fa fa-sign-out-alt me-2"></i> Logout
                         </a>
                     </li>
                 </ul>
