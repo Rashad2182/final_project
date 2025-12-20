@@ -4,12 +4,10 @@
     @lang('messages.home')
 @endsection
 
-@section('css')
-
-@endsection
-
 @section('content')
-{{--@include('front.includes.carousel')--}}
+
+    @include('front.includes.banner')
+
     <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -48,7 +46,6 @@
         </div>
     </div>
     <!-- About End -->
-
 
     <!-- Service Start -->
     <div class="container-xxl py-5">

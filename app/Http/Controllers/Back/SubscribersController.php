@@ -43,10 +43,10 @@ class SubscribersController extends Controller
             'email' => $request->email
         ]);
         return response()->json([
-            'subscribe danger' => __('toaster.danger'),
-            'subscribe error' => __('toaster.error'),
-            'subscribe info' => __('toaster.info'),
-            'subscribe warning' => __('toaster.warning'),
+            'danger' => __('toaster.danger'),
+            'error' => __('toaster.error'),
+            'info' => __('toaster.info'),
+            'warning' => __('toaster.warning'),
             'empty' => __('toaster.empty'),
             'incorrect' => __('toaster.incorrect'),
             'success' => __('toaster.success'),
@@ -86,6 +86,6 @@ class SubscribersController extends Controller
 
         $subscriber->delete();
 
-        return redirect()->back()->with('success', __('toaster.delete successed'));
+        return redirect()->back()->with('success', __('delete successed'));
     }
 }

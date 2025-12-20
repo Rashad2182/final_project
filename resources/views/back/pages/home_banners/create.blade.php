@@ -163,7 +163,7 @@
                     </div>
 
                     <div class="form-inner">
-                        <form action="{{ route('home_banners.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('home_banners.store') }}" method="POST" enctype="multipart/form-data" onsubmit="'{{ route('home_banners.index') }}?lang=az'">
                             @csrf
 
                             <div class="row">
@@ -175,7 +175,7 @@
                                     <select name="lang" id="lang" class="form-select">
                                         @foreach(config('app.languages') as $code => $name)
                                         <option value="{{ $code }}"
-                                             @selected(old('lang', ) == 'az')>
+                                             @selected(old('lang', 'az') == $code)>
                                             {{ $name }}
                                         </option>
                                         @endforeach

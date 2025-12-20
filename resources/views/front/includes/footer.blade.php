@@ -72,6 +72,14 @@
 
 @section('js')
     <script>
+        toastr.options = {
+            "positionClass": "toast-top-right",
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": "5000"
+        };
+    </script>
+    <script>
         $(document).ready(function () {
             $('#subscribeBtn').click(function () {
 
@@ -87,27 +95,19 @@
 
                     success: function (response) {
                         $('#subscribeEmail').val('');
-                        toastr.success("Abunə oldunuz😊");
+                        toastr.success("Siz uğurla Abunə oldunuz😊");
                     },
                     error: function (xhr) {
                         if (xhr.status === 422 && xhr.responseJSON.errors) {
                             let firstError = Object.values(xhr.responseJSON.errors)[0][0];
                             toastr.error(firstError);
                         } else {
-                            toastr.error("E-poçt ünvanı boş olmamalıdır və ya düzgün yazılmalıdır!❌");
+                            toastr.error("Email ünvanı boş olmamalıdır və doğru qaydada yazılmalıdır❌");
                         }
                     },
                 });
 
             });
         });
-    </script>
-    <script>
-        toastr.options = {
-            "positionClass": "toast-top-right",
-            "closeButton": true,
-            "progressBar": true,
-            "timeOut": "5000"
-        };
     </script>
 @endsection

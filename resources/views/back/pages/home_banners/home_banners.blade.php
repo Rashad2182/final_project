@@ -95,10 +95,8 @@
                                     <td><span class="badge bg-secondary">{{ $banner->order_no }}</span></td>
                                     <td>
                                         @if($banner->image)
-                                            <img src="{{ 'files/home_banners/'.$banner->image }}" alt="{{ $banner->alt ?? '' }}"
+                                            <img src="{{ asset('files/home_banners/'.$banner->image) }}" alt="{{ $banner->alt ?? '' }}"
                                                  class="banner-image">
-                                        @else
-                                            <span class="text-muted">Şəkil yoxdur</span>
                                         @endif
                                     </td>
                                     <td>{{ $banner->title ?? '-' }}</td>
@@ -106,7 +104,7 @@
                                     <td>{{ $banner->phone ?? '-' }}</td>
                                     <td class="text-center">
                                         <div class="action-buttons">
-                                            <button class="btn btn-ghost-primary" style="background-color: #0dcaf0">
+                                            <button class="btn btn-primary" style="background-color: #0dcaf0">
                                                 <a href="{{ route('home_banners.edit', $banner->id) }}"
                                                    style="color: #F0F0F0; text-decoration: none">
                                                     Update
