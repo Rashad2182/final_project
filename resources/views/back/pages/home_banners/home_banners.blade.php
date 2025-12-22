@@ -48,12 +48,13 @@
 @endsection
 
 @section('content')
-    <div class="row" style="background-color: #000000">
+    <div class="row">
         <div class="col-12">
-            <div class="card" style="background-color: grey">
+            <div class="card" style="background-color: black">
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center py-3">
-                    <h4 class="mb-0 fw-bold">
-                        <i class="bi bi-image me-2"></i> Home Banners List
+                    <h4 class="mb-0 fw-bold" style="color: white">
+                        <i class="bi bi-image me-2"></i>
+                        Home Banners List
                     </h4>
                     <div class="d-flex align-items-center gap-3">
                         <select id="languageFilter" class="form-select" style="width: auto;"
@@ -72,8 +73,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="bannersTable" class="table table-hover align-middle">
+                    <div class="table table-dark">
+                        <table id="bannersTable" class="table table-dark table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -91,8 +92,8 @@
                             @forelse($banners as $banner)
                                 <tr>
                                     <td><span class="badge bg-light text-dark">{{ $banner->id }}</span></td>
-                                    <td><span class="badge bg-info">{{ strtoupper($banner->lang) }}</span></td>
-                                    <td><span class="badge bg-secondary">{{ $banner->order_no }}</span></td>
+                                    <td><span style="color: black" class="badge bg-green">{{ strtoupper($banner->lang) }}</span></td>
+                                    <td><span style="color: black" class="badge bg-yellow">{{ $banner->order_no }}</span></td>
                                     <td>
                                         @if($banner->image)
                                             <img src="{{ asset('files/home_banners/'.$banner->image) }}" alt="{{ $banner->alt ?? '' }}"

@@ -38,6 +38,7 @@ class HomeBannerController extends Controller
      * Store a newly created resource in storage.
      * @throws Exception
      */
+
     public function store(StoreHomeBannerRequest $request)
     {
 
@@ -58,7 +59,7 @@ class HomeBannerController extends Controller
             'phone' => $request->phone,
             'order_no' => $request->order_no,
         ]);
-        return redirect()->route('home_banners.index')->with('success', __('Banner əlavə edildi👍'));
+        return redirect()->route('home_banners.index', ['lang' => $request->lang])->with('success', __('Banner əlavə edildi👍'));
     }
 
     /**
@@ -84,30 +85,27 @@ class HomeBannerController extends Controller
      */
     public function update(UpdateHomeBannerRequest $request, HomeBanner $homeBanner)
     {
-        $request->validate([
-            'image' => 'required|file|max:5120', // max 5MB
-        ]);
+        $image = $this->updateFile(
+            $homeBanner->image,
+            $request->file('image'),
+            'files/home_banners/'
+        );
 
-
-        $image = $this->fileSaves('files/home_banners', $request->image);
-
-
-        HomeBanner::create([
-            'lang' => $request->lang,
-            'image' => $image,
-            'alt' => $request->alt,
-            'title' => $request->title,
-            'address' => $request->address,
-            'phone' => $request->phone,
+        $homeBanner->update([
+            'lang'     => $request->lang,
+            'image'    => $image,
+            'alt'      => $request->alt,
+            'title'    => $request->title,
+            'address'  => $request->address,
+            'phone'    => $request->phone,
             'order_no' => $request->order_no,
         ]);
 
-        if ($request->has('save')) {
-            return redirect()->route('home_banners.index', ['lang' => '?lang=az'])->with('success', __('Banner yeniləndi👍'));
-        } else {
-            return redirect()->route('home_banners.index', ['lang' => $request->lang, 'home_banner' => $homeBanner])->with('success', __('Banner yeniləndi👍'));
-        }
+        return redirect()
+            ->route('home_banners.index', ['lang' => $request->lang])
+            ->with('success', __('Banner yeniləndi 👍'));
     }
+
 
     /**
      * Remove the specified resource from storage.

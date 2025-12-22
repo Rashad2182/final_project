@@ -157,20 +157,32 @@
                 <div class="form-card p-4 mb-4">
                     <div class="d-flex align-items-center mb-4">
                         <div class="section-icon me-3">
-                            <i class="bi bi-images"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="icon icon-tabler icons-tabler-outline icon-tabler-home-hand">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M18 9l-6 -6l-9 9h2v7a2 2 0 0 0 2 2h3.5"/>
+                                <path d="M9 21v-6a2 2 0 0 1 2 -2h2"/>
+                                <path
+                                    d="M16 17.5l-.585 -.578a1.516 1.516 0 0 0 -2 0c-.477 .433 -.551 1.112 -.177 1.622l1.762 2.456c.37
+                                    .506 1.331 1 2 1h3c1.009 0 1.497 -.683 1.622 -1.593c.252 -.938 .378 -1.74 .378 -2.407c0
+                                     -1 -.939 -1.843 -2 -2h-1v-2.636c0 -.754 -.672 -1.364 -1.5 -1.364s-1.5 .61 -1.5 1.364v4.136z"/>
+                            </svg>
                         </div>
                         <h2 class="section-title">Yeni Home Banner</h2>
                     </div>
 
                     <div class="form-inner">
-                        <form action="{{ route('home_banners.update' , ['home_banner'=>$homeBanner->id]) }}" method="POST" enctype="multipart/form-data" onsubmit="{{ route('home_banners.index') }}">
+                        <form action="{{ route('home_banners.update' , ['home_banner'=>$homeBanner->id]) }}"
+                              method="POST" enctype="multipart/form-data">
                             @csrf
-
+                            @method('PUT')
                             <div class="row">
                                 <!-- Language Selection -->
                                 <div class="col-md-6 mb-4">
                                     <label for="lang" class="form-label">
-                                        <i class="bi bi-translate me-2"></i>Dil
+                                        <i class="bi bi-translate me-2"></i>Dil seçin
                                     </label>
                                     <select name="lang" id="lang" class="form-select">
                                         @foreach(config('app.languages') as $code => $name)
@@ -191,7 +203,8 @@
                                         <i class="bi bi-sort-numeric-down me-2"></i>Sıra Nömrəsi
                                     </label>
                                     <input type="number" name="order_no" id="order_no" class="form-control"
-                                           placeholder="Sıra nömrəsini daxil edin..." value="{{ old('order_no', $homeBanner->order_no) }}"
+                                           placeholder="Sıra nömrəsini daxil edin..."
+                                           value="{{ old('order_no', $homeBanner->order_no) }}"
                                            min="0">
                                     @error('order_no')
                                     <div class="text-danger mt-1">{{ $message }}</div>
@@ -204,7 +217,8 @@
                                         <i class="bi bi-card-text me-2"></i>Alt Text
                                     </label>
                                     <input type="text" name="alt" id="alt" class="form-control"
-                                           placeholder="Şəkil üçün alternativ mətn..." value="{{ old('alt', $homeBanner->alt) }}">
+                                           placeholder="Şəkil üçün alternativ mətn..."
+                                           value="{{ old('alt', $homeBanner->alt) }}">
                                     @error('alt')
                                     <div class="text-danger mt-1">{{ $message }}</div>
                                     @enderror
@@ -235,7 +249,8 @@
                                         <i class="bi bi-fonts me-2"></i>Başlıq
                                     </label>
                                     <input type="text" name="title" id="title" class="form-control"
-                                           placeholder="Banner başlığını daxil edin..." value="{{ old('title',$homeBanner->title) }}">
+                                           placeholder="Banner başlığını daxil edin..."
+                                           value="{{ old('title',$homeBanner->title) }}">
                                     @error('title')
                                     <div class="text-danger mt-1">{{ $message }}</div>
                                     @enderror
@@ -314,14 +329,14 @@
                     <div class="upload-placeholder">
                         <i class="bi bi-cloud-upload"></i>
                         <p class="mb-0">Şəkil yükləmək üçün klikləyin</p>
-                        <small class="text-muted">Maksimum fayl ölçüsü: 2MB</small>
+                        <small class="text-muted">Maksimum fayl ölçüsü: 5MB</small>
                     </div>
                 `;
             }
         });
     </script>
     <script>
-        document.getElementById('src').addEventListener('change', function (event) {
+        document.getElementById('image').addEventListener('change', function (event) {
             const preview = document.getElementById('imagePreviewController');
             const file = event.target.files[0];
 

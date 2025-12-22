@@ -37,6 +37,7 @@ trait FileUploader
         }
         return $fileNewName;
     }
+
     public function fileSaves($path, UploadedFile $file)
     {
         $fileNewName = null;
@@ -59,6 +60,17 @@ trait FileUploader
         }
 
         return $fileNewName;
+    }
+
+    public function fileSaveLrvl()
+    {
+        $name = null;
+        if ($request->hasFile($inputName)) {
+            $file = $request->{$inputName};
+            $name = $file->hashName();
+            $file->move(public_path($path), $name);
+        }
+        return $name;
     }
 
     /**
@@ -102,6 +114,7 @@ trait FileUploader
      * Faylı yeniləmək
      * $src = $this->fileUpdate($oldName, isset($_FILES['foto']), $_FILES['foto'], 'uploads/');
      */
+
     public function fileUpdate($name, $fileSend, $file, $path)
     {
         if ($fileSend && isset($file['tmp_name']) && $file['error'] === UPLOAD_ERR_OK) {
@@ -117,6 +130,60 @@ trait FileUploader
                 mkdir($path, 0777, true);
             }
             move_uploaded_file($file['tmp_name'], $path . '/' . $name);
+        }
+
+        return $name;
+    }
+
+    public function updateFile(
+        ?string $oldFile,
+        ?UploadedFile $newFile,
+        string $path
+    ): ?array
+    {
+        // Yeni fayl yoxdursa köhnə faylı saxla
+        if (!$newFile instanceof UploadedFile) {
+            return $oldFile;
+        }
+
+        try {
+            // Qovluq yoxdursa yarat
+            if (!File::exists(public_path($path))) {
+                File::makeDirectory(public_path($path), 0755, true);
+            }
+
+            // Köhnə faylı sil
+            if ($oldFile && File::exists(public_path($path . $oldFile))) {
+                File::delete(public_path($path . $oldFile));
+            }
+
+            // Unikal və təhlükəsiz ad
+            $fileName = Str::uuid() . '.' . $newFile->getClientOriginalExtension();
+
+            // Faylı move et
+            $newFile->move(public_path($path), $fileName);
+
+            return $fileName;
+
+        } catch (\Throwable $e) {
+            logger()->error('File update failed', [
+                'error' => $e->getMessage(),
+                'path'  => $path
+            ]);
+
+            return $oldFile; // fallback
+        }
+    }
+
+    public function fileUpdateLrvl($name, $fileSend, $file, $path)
+    {
+        if ($fileSend) {
+            if (File::exists(public_path($path . $name))) {
+                File::delete(public_path($path . $name));
+            }
+
+            $name = $file->hashName();
+            $file->move(public_path($path), $name);
         }
 
         return $name;

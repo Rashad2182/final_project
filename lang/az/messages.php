@@ -5,7 +5,7 @@ return[
     'service'=>'Xidmətlər',
     'pages'=>'Səhifələr',
     'contact'=>'Əlaqə',
-    'sign up' => 'Qeydiyyat',
+    'sign up' => 'Daxil Ol',
     'pricing plan' => 'Xidmət Haqqı',
     'team' => 'Team',
     'our programists' => 'Bizim Programistlər',

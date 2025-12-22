@@ -6,15 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>@yield('title')</title>
     <!-- CSS files -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap / Tabler Core CSS -->
     <link href="{{ asset('dashboard') }}/css/tabler.min.css?1692870487" rel="stylesheet"/>
     <link href="{{ asset('dashboard') }}/css/tabler-flags.min.css?1692870487" rel="stylesheet"/>
     <link href="{{ asset('dashboard') }}/css/tabler-payments.min.css?1692870487" rel="stylesheet"/>
     <link href="{{ asset('dashboard') }}/css/tabler-vendors.min.css?1692870487" rel="stylesheet"/>
     <link href="{{ asset('dashboard') }}/css/demo.min.css?1692870487" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -84,25 +91,34 @@
         @include('back.includes.footer')
     </div>
 </div>
+<!-- jQuery (HƏMİŞƏ BİRİNCİ) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- DataTables -->
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-<!-- Template Javascript -->
-<script src="{{ asset('dashboard') }}/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-<!-- Toastr JS -->
+
+<!-- Toastr -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Libs JS -->
-<script src="{{ asset('dashboard') }}/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
-<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
-<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
-<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
+
+<!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Tabler Core -->
-<script src="js/tabler.min.js?1692870487" defer></script>
-<script src="js/demo.min.js?1692870487" defer></script>
+
+<!-- Charts & Maps -->
+<script src="{{ asset('dashboard') }}/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world.js"></script>
+<script src="{{ asset('dashboard') }}/libs/jsvectormap/dist/maps/world-merc.js"></script>
+
+<!-- Tabler Core (ƏVVƏL) -->
+<script src="{{ asset('dashboard') }}/js/tabler.min.js"></script>
+<script src="{{ asset('dashboard') }}/js/demo.min.js"></script>
+
+<!-- Custom JS (SONDA, 1 DƏFƏ) -->
+<script src="{{ asset('dashboard') }}/js/main.js"></script>
+
 @yield('js')
+
 </body>
 </html>
 

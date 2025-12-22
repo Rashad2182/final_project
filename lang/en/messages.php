@@ -5,7 +5,7 @@ return [
     'service'=>'Service',
     'pages'=>'Pages',
     'contact'=>'Contact',
-    'sign up' => 'Sign up',
+    'sign up' => 'Sign In',
     'pricing plan' => 'Pricing Plan',
     'team' => 'Bizim Heyət',
     'our programists' => 'Our Programists',

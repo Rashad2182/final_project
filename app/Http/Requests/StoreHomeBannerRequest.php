@@ -24,7 +24,7 @@ class StoreHomeBannerRequest extends FormRequest
     {
         return [
             'lang' => ['required' , Rule::in(array_keys(config('app.languages'))) ],
-            'image' => ['required' , 'image' , 'max:5120' ],
+            'image' => ['nullable' , 'image' , 'max:5120' ],
             'alt' => ['required' , 'string' , 'max:255' ],
             'title' => ['required' , 'string' , 'max:255' ],
             'address' => ['required' , 'string' , 'max:255' ],

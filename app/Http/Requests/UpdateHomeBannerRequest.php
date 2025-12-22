@@ -25,7 +25,7 @@ class UpdateHomeBannerRequest extends FormRequest
     {
         return [
             'lang' => ['required' , Rule::in(array_keys(config('app.languages'))) ],
-            'image' => ['required' , 'string' , 'mimes:jpeg,png,jpg,gif,svg' , 'max:5120' ],
+            'image' => ['nullable' , 'string' , 'max:5120' ],
             'alt' => ['required' , 'string' , 'max:255' ],
             'title' => ['required' , 'string' , 'max:255' ],
             'address' => ['required' , 'string' , 'max:255' ],

@@ -66,7 +66,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -80,7 +80,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -94,7 +94,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -108,7 +108,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -122,7 +122,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -136,7 +136,7 @@
                             <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam.</p>
                             <span class="text-uppercase text-primary">From $15</span>
                         </div>
-                        <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+                        <a class="btn btn-square" href="{{ route('front.contact') }}"><i class="fa fa-plus text-primary"></i></a>
                     </div>
                 </div>
             </div>

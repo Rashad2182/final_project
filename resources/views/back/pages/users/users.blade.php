@@ -11,11 +11,11 @@
         }
 
         .container {
-            background-color: #1a1a1a;
+            background-color: black;
         }
 
         .table-wrap {
-            background: #2d2d2d;
+            background: black;
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
@@ -26,7 +26,7 @@
         }
 
         .table thead th {
-            background: #1a1a1a;
+            background: black;
             border-bottom: 0;
             font-size: 13px;
             letter-spacing: .5px;

@@ -1,8 +1,7 @@
  <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s" style="width: 99%">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                @if(isset($banners) && $banners->count())
                     @foreach($banners as $banner)
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                             <img class="w-100" src="{{ asset('files/home_banners/'.$banner->image) }}" alt="{{ $banner->alt }}">
@@ -19,7 +18,6 @@
                         </div>
                     @endforeach
             </div>
-            @else
                 <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,7 +30,6 @@
                 </button>
         </div>
     </div>
-    @endif
     <!-- Carousel End -->
 
 
